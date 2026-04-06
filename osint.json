@@ -1,0 +1,540 @@
+{
+  "name": "OSINT Starter",
+  "version": "2.0.0",
+  "description": "The most powerful free investigation pack available anywhere. 25+ entity extractors, 15 evidence categories, 8 focus modes, and a full graph visualization engine. Drop any files in and watch CORTEX build your intelligence map. This is not a demo — this is a weapon.",
+  "author": "CORTEX",
+  "license": "free",
+  "tags": [
+    "osint",
+    "intelligence",
+    "investigation",
+    "people-search",
+    "corporate",
+    "network",
+    "financial",
+    "free"
+  ],
+  "entities": {
+    "Email": {
+      "patterns": [
+        "[\\w.+-]+@[\\w.-]+\\.[a-z]{2,}"
+      ],
+      "color": "#00ff88",
+      "shape": "triangle"
+    },
+    "Phone": {
+      "patterns": [
+        "(?:(?:\\+?1)?[-.\\s]?)?\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}",
+        "\\+\\d{1,3}[-.\\s]?\\d{4,14}"
+      ],
+      "color": "#44bbff",
+      "shape": "circle"
+    },
+    "Person_Name": {
+      "patterns": [
+        "(?:Mr|Mrs|Ms|Dr|Prof|Rev|Hon|Sgt|Cpl|Capt|Det|Ofc)\\.?\\s+[A-Z][a-z]+(?:\\s+[A-Z][a-z]+){1,3}",
+        "[A-Z][a-z]+\\s+(?:[A-Z]\\.\\s+)?[A-Z][a-z]+"
+      ],
+      "color": "#00ccff",
+      "shape": "circle"
+    },
+    "Organization": {
+      "patterns": [
+        "[A-Z][A-Za-z&'.-]+(?:\\s+[A-Z][A-Za-z&'.-]+)*\\s+(?:Inc|LLC|Corp|Ltd|Co|LP|LLP|PLC|GmbH|SA|AG|NV|BV)\\b\\.?",
+        "(?:Department|Bureau|Office|Agency|Commission|Authority|Board|Council|Division)\\s+of\\s+[A-Z][A-Za-z\\s]+"
+      ],
+      "color": "#ffaa00",
+      "shape": "square"
+    },
+    "IP_Address": {
+      "patterns": [
+        "\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b",
+        "(?:[0-9a-fA-F]{1,4}:){2,7}[0-9a-fA-F]{1,4}"
+      ],
+      "color": "#ff6644",
+      "shape": "diamond"
+    },
+    "Domain": {
+      "patterns": [
+        "\\b(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+(?:com|net|org|gov|edu|io|co|info|biz|mil|dev|app|me|us|uk|ca|au|de|fr|ru|cn|jp|br|in)\\b"
+      ],
+      "color": "#cc44ff",
+      "shape": "hexagon"
+    },
+    "URL": {
+      "patterns": [
+        "https?://[^\\s\"'<>\\)\\]]+"
+      ],
+      "color": "#9966ff",
+      "shape": "hexagon"
+    },
+    "Social_Handle": {
+      "patterns": [
+        "@[A-Za-z0-9_]{1,30}",
+        "(?:facebook|twitter|instagram|linkedin|tiktok|reddit|youtube|github|telegram)\\.com/[A-Za-z0-9_./-]+"
+      ],
+      "color": "#ff44aa",
+      "shape": "star"
+    },
+    "Crypto_Wallet": {
+      "patterns": [
+        "\\b[13][a-km-zA-HJ-NP-Z1-9]{25,34}\\b",
+        "\\bbc1[a-z0-9]{25,39}\\b",
+        "\\b0x[0-9a-fA-F]{40}\\b",
+        "\\bT[A-Za-z1-9]{33}\\b"
+      ],
+      "color": "#ffd700",
+      "shape": "diamond"
+    },
+    "SSN": {
+      "patterns": [
+        "\\b\\d{3}-\\d{2}-\\d{4}\\b"
+      ],
+      "color": "#ff0044",
+      "shape": "diamond"
+    },
+    "Credit_Card": {
+      "patterns": [
+        "\\b(?:4\\d{3}|5[1-5]\\d{2}|3[47]\\d{2}|6(?:011|5\\d{2}))[- ]?\\d{4}[- ]?\\d{4}[- ]?\\d{4}\\b"
+      ],
+      "color": "#ff2244",
+      "shape": "diamond"
+    },
+    "Date": {
+      "patterns": [
+        "\\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\\s+\\d{1,2},?\\s+\\d{4}\\b",
+        "\\b\\d{1,2}/\\d{1,2}/\\d{2,4}\\b",
+        "\\b\\d{4}-\\d{2}-\\d{2}\\b"
+      ],
+      "color": "#88aacc",
+      "shape": "square"
+    },
+    "Street_Address": {
+      "patterns": [
+        "\\b\\d{1,6}\\s+[A-Z][a-z]+(?:\\s+[A-Z][a-z]+)*\\s+(?:St|Ave|Blvd|Dr|Ln|Rd|Way|Ct|Pl|Cir|Pkwy|Hwy|Apt|Suite|Ste|Unit|Fl)\\b\\.?"
+      ],
+      "color": "#ffcc00",
+      "shape": "pentagon"
+    },
+    "GPS_Coordinate": {
+      "patterns": [
+        "-?\\d{1,3}\\.\\d{4,8},\\s*-?\\d{1,3}\\.\\d{4,8}",
+        "\\b\\d{1,3}[°]\\s*\\d{1,2}[']\\s*\\d{1,2}(?:\\.\\d+)?[\"NS]"
+      ],
+      "color": "#ffcc00",
+      "shape": "pentagon"
+    },
+    "VIN": {
+      "patterns": [
+        "\\b[A-HJ-NPR-Z0-9]{17}\\b"
+      ],
+      "color": "#66aaff",
+      "shape": "square"
+    },
+    "License_Plate": {
+      "patterns": [
+        "\\b[A-Z]{1,3}[- ]?\\d{1,4}[- ]?[A-Z]{0,3}\\b"
+      ],
+      "color": "#66aaff",
+      "shape": "square"
+    },
+    "MAC_Address": {
+      "patterns": [
+        "([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}"
+      ],
+      "color": "#ff8844",
+      "shape": "diamond"
+    },
+    "IMEI": {
+      "patterns": [
+        "\\b\\d{15}\\b"
+      ],
+      "color": "#ff8844",
+      "shape": "diamond"
+    },
+    "Hash_Value": {
+      "patterns": [
+        "\\b[a-fA-F0-9]{32}\\b",
+        "\\b[a-fA-F0-9]{40}\\b",
+        "\\b[a-fA-F0-9]{64}\\b"
+      ],
+      "color": "#aa88ff",
+      "shape": "hexagon"
+    },
+    "Username": {
+      "patterns": [
+        "(?:user(?:name)?|login|handle|alias|nick(?:name)?)[:\\s]+['\"]?([A-Za-z0-9_.-]{3,30})"
+      ],
+      "color": "#ff44aa",
+      "shape": "star"
+    },
+    "Bank_Account": {
+      "patterns": [
+        "\\b(?:IBAN[:\\s]?)?[A-Z]{2}\\d{2}[A-Z0-9]{4}\\d{7}(?:[A-Z0-9]{0,16})\\b",
+        "\\b(?:routing|ABA)[:\\s#]*\\d{9}\\b",
+        "\\b(?:acct|account)[:\\s#]*\\d{8,17}\\b"
+      ],
+      "color": "#ff2244",
+      "shape": "diamond"
+    },
+    "Case_Number": {
+      "patterns": [
+        "\\b\\d{1,4}[:-]\\d{2,6}[:-][A-Z]{1,4}(?:-\\d+)?\\b",
+        "\\bCase\\s+(?:No\\.?|Number|#)\\s*[:\\s]?[A-Z0-9-]+"
+      ],
+      "color": "#aaaaaa",
+      "shape": "square"
+    },
+    "Passport": {
+      "patterns": [
+        "\\b[A-Z]{1,2}\\d{6,9}\\b"
+      ],
+      "color": "#44ddaa",
+      "shape": "triangle"
+    },
+    "EIN_Tax_ID": {
+      "patterns": [
+        "\\b\\d{2}-\\d{7}\\b"
+      ],
+      "color": "#ff6644",
+      "shape": "diamond"
+    },
+    "Flight_Number": {
+      "patterns": [
+        "\\b[A-Z]{2,3}\\s?\\d{1,4}\\b"
+      ],
+      "color": "#44bbff",
+      "shape": "triangle"
+    },
+    "Document_ID": {
+      "patterns": [
+        "\\b(?:DOC|REF|ID|CASE|FILE|INV|RPT)[- #:]*[A-Z0-9]{4,20}\\b"
+      ],
+      "color": "#aaaaaa",
+      "shape": "square"
+    }
+  },
+  "categories": {
+    "personal_info": "\\bname\\b|\\baddress\\b|\\bdob\\b|\\bdate\\s*of\\s*birth\\b|\\bbirthday\\b|\\bssn\\b|\\bidentity\\b|\\bbiometric\\b",
+    "financial": "\\bbank\\b|\\baccount\\b|\\btransaction\\b|\\bpayment\\b|\\binvoice\\b|\\btax\\b|\\bsalary\\b|\\bwire\\b|\\bdeposit\\b|\\bwithdraw\\b",
+    "communication": "\\bemail\\b|\\btext\\b|\\bmessage\\b|\\bchat\\b|\\bcall\\b|\\bvoicemail\\b|\\bcorrespondence\\b|\\bletter\\b",
+    "location": "\\bgps\\b|\\blocation\\b|\\bcoordinate\\b|\\blat(?:itude)?\\b|\\blong(?:itude)?\\b|\\bgeolocation\\b|\\bcheckin\\b",
+    "social_media": "\\bfacebook\\b|\\btwitter\\b|\\binstagram\\b|\\btiktok\\b|\\blinkedin\\b|\\breddit\\b|\\byoutube\\b|\\bsnapch?at\\b|\\btelegram\\b|\\bdiscord\\b",
+    "corporate": "\\bcompany\\b|\\bcorporat\\b|\\bllc\\b|\\binc\\b|\\bregistration\\b|\\bein\\b|\\bduns\\b|\\bfiduciary\\b|\\bdirector\\b|\\bofficer\\b",
+    "legal_records": "\\bcriminal\\b|\\barrest\\b|\\bcourt\\b|\\bfiling\\b|\\bjudgment\\b|\\blien\\b|\\bbankruptcy\\b|\\bprobation\\b|\\bwarrant\\b",
+    "property": "\\bproperty\\b|\\bdeed\\b|\\btitle\\b|\\bmortgage\\b|\\bforeclosure\\b|\\btax\\s*assessment\\b|\\bparcel\\b|\\bzoning\\b",
+    "vehicle": "\\bvehicle\\b|\\bvin\\b|\\blicense\\s*plate\\b|\\bregistration\\b|\\bautomobile\\b|\\bmake\\b.*\\bmodel\\b",
+    "travel": "\\bflight\\b|\\bpassport\\b|\\bvisa\\b|\\btravel\\b|\\bitinerary\\b|\\bairline\\b|\\bboarding\\b|\\bcustoms\\b",
+    "network_infra": "\\bserver\\b|\\bfirewall\\b|\\brouter\\b|\\bnetwork\\b|\\bdns\\b|\\bproxy\\b|\\bvpn\\b|\\btor\\b|\\bonion\\b",
+    "cyber_threat": "\\bmalware\\b|\\bphishing\\b|\\bransomware\\b|\\bexploit\\b|\\bbreach\\b|\\bvulnerability\\b|\\bcve\\b|\\bthreat\\b",
+    "government": "\\bfoia\\b|\\bgovernment\\b|\\bfederal\\b|\\bstate\\b|\\bmunicipal\\b|\\bagency\\b|\\bregulat\\b|\\blicens\\b",
+    "medical": "\\bmedical\\b|\\bhospital\\b|\\bdiagnos\\b|\\bprescription\\b|\\btreatment\\b|\\bhipaa\\b|\\bpatient\\b",
+    "employment": "\\bemploy\\b|\\bhire\\b|\\btermination\\b|\\bsalary\\b|\\bresume\\b|\\bworkplace\\b|\\bhr\\b|\\bpayroll\\b"
+  },
+  "authorities": {
+    "FOIA": {
+      "patterns": [
+        "\\bFOIA\\b|\\bfreedom\\s+of\\s+information\\b|\\bpublic\\s+records\\s+(?:act|request)\\b"
+      ],
+      "color": "#00ccff",
+      "shape": "square"
+    },
+    "FCRA": {
+      "patterns": [
+        "\\bFCRA\\b|\\bfair\\s+credit\\s+reporting\\b"
+      ],
+      "color": "#ffaa00",
+      "shape": "square"
+    },
+    "ECPA": {
+      "patterns": [
+        "\\bECPA\\b|\\belectronic\\s+communications\\s+privacy\\b|\\bwiretap\\b"
+      ],
+      "color": "#ff6644",
+      "shape": "square"
+    },
+    "CFAA": {
+      "patterns": [
+        "\\bCFAA\\b|\\bcomputer\\s+fraud\\b|\\bunauthorized\\s+access\\b"
+      ],
+      "color": "#ff2244",
+      "shape": "square"
+    },
+    "GDPR": {
+      "patterns": [
+        "\\bGDPR\\b|\\bgeneral\\s+data\\s+protection\\b|\\bdata\\s+subject\\b|\\bright\\s+to\\s+be\\s+forgotten\\b"
+      ],
+      "color": "#44ddaa",
+      "shape": "square"
+    },
+    "HIPAA": {
+      "patterns": [
+        "\\bHIPAA\\b|\\bhealth\\s+insurance\\s+portability\\b|\\bprotected\\s+health\\b"
+      ],
+      "color": "#ff44aa",
+      "shape": "square"
+    },
+    "Court_Citation": {
+      "patterns": [
+        "\\d+\\s+(?:F\\.[23]d|F\\.\\s*Supp|S\\.\\s*Ct|U\\.S\\.)\\s*\\d+",
+        "\\b\\d+\\s+(?:Mich|Cal|N\\.Y|Tex|Fla|Ohio|Ill|Pa)(?:\\.\\s*(?:App\\.)?)?\\s*\\d+"
+      ],
+      "color": "#aaaaaa",
+      "shape": "square"
+    },
+    "USC_Statute": {
+      "patterns": [
+        "\\b\\d+\\s+U\\.?S\\.?C\\.?\\s*(?:§|[Ss]ec(?:tion)?\\.?)\\s*\\d+",
+        "\\b(?:18|26|28|31|42|47)\\s+USC\\s+\\d+"
+      ],
+      "color": "#88aacc",
+      "shape": "square"
+    },
+    "State_Statute": {
+      "patterns": [
+        "\\b(?:MCL|ORC|ILCS|CPC|Penal|Rev\\.?\\s*Stat)\\s*(?:§)?\\s*\\d+[\\d.]*"
+      ],
+      "color": "#88aacc",
+      "shape": "square"
+    },
+    "Executive_Order": {
+      "patterns": [
+        "\\bE(?:xecutive)?\\s*O(?:rder)?\\s*\\d{4,5}\\b"
+      ],
+      "color": "#ffcc00",
+      "shape": "square"
+    }
+  },
+  "focus_modes": {
+    "people": [
+      "Email",
+      "Phone",
+      "Person_Name",
+      "Social_Handle",
+      "SSN",
+      "Username"
+    ],
+    "corporate": [
+      "Organization",
+      "Domain",
+      "Email",
+      "EIN_Tax_ID",
+      "Bank_Account"
+    ],
+    "financial": [
+      "Crypto_Wallet",
+      "Credit_Card",
+      "Bank_Account",
+      "EIN_Tax_ID"
+    ],
+    "network": [
+      "IP_Address",
+      "Domain",
+      "MAC_Address",
+      "Hash_Value",
+      "URL"
+    ],
+    "vehicle": [
+      "VIN",
+      "License_Plate"
+    ],
+    "location": [
+      "Street_Address",
+      "GPS_Coordinate"
+    ],
+    "identity": [
+      "SSN",
+      "Passport",
+      "Person_Name",
+      "Email",
+      "Phone"
+    ],
+    "all": []
+  },
+  "scoring": {
+    "entity_match": 4,
+    "authority_match": 2,
+    "category_match": 2,
+    "quote_match": 1,
+    "focus_boost": 3,
+    "high_threshold": 14,
+    "medium_threshold": 6
+  },
+  "node_types": {
+    "person": {
+      "color": "#00ccff",
+      "shape": "circle",
+      "label": "Person"
+    },
+    "organization": {
+      "color": "#ffaa00",
+      "shape": "square",
+      "label": "Organization"
+    },
+    "domain": {
+      "color": "#cc44ff",
+      "shape": "hexagon",
+      "label": "Domain"
+    },
+    "ip_address": {
+      "color": "#ff6644",
+      "shape": "diamond",
+      "label": "IP Address"
+    },
+    "email": {
+      "color": "#00ff88",
+      "shape": "triangle",
+      "label": "Email"
+    },
+    "phone": {
+      "color": "#44bbff",
+      "shape": "circle",
+      "label": "Phone"
+    },
+    "social_account": {
+      "color": "#ff44aa",
+      "shape": "star",
+      "label": "Social Account"
+    },
+    "document": {
+      "color": "#aaaaaa",
+      "shape": "square",
+      "label": "Document"
+    },
+    "location": {
+      "color": "#ffcc00",
+      "shape": "pentagon",
+      "label": "Location"
+    },
+    "financial": {
+      "color": "#ff2244",
+      "shape": "diamond",
+      "label": "Financial"
+    },
+    "crypto": {
+      "color": "#ffd700",
+      "shape": "diamond",
+      "label": "Crypto Wallet"
+    },
+    "vehicle": {
+      "color": "#66aaff",
+      "shape": "square",
+      "label": "Vehicle"
+    },
+    "identity": {
+      "color": "#44ddaa",
+      "shape": "triangle",
+      "label": "Identity Doc"
+    },
+    "hash": {
+      "color": "#aa88ff",
+      "shape": "hexagon",
+      "label": "Hash/Indicator"
+    },
+    "authority": {
+      "color": "#88aacc",
+      "shape": "square",
+      "label": "Legal Authority"
+    }
+  },
+  "edge_types": {
+    "owns": {
+      "color": "#00ccff",
+      "width": 2,
+      "label": "owns"
+    },
+    "contacted": {
+      "color": "#00ff88",
+      "width": 1,
+      "label": "contacted"
+    },
+    "works_at": {
+      "color": "#ffaa00",
+      "width": 2,
+      "label": "works at"
+    },
+    "lives_at": {
+      "color": "#ffcc00",
+      "width": 2,
+      "label": "lives at"
+    },
+    "connected_to": {
+      "color": "#556688",
+      "width": 1,
+      "label": "connected to"
+    },
+    "resolves_to": {
+      "color": "#cc44ff",
+      "width": 1,
+      "label": "resolves to"
+    },
+    "mentioned_in": {
+      "color": "#334466",
+      "width": 1,
+      "label": "mentioned in"
+    },
+    "transacted_with": {
+      "color": "#ff2244",
+      "width": 3,
+      "label": "transacted with"
+    },
+    "associated": {
+      "color": "#445577",
+      "width": 1,
+      "label": "associated"
+    },
+    "located_at": {
+      "color": "#ffcc00",
+      "width": 2,
+      "label": "located at"
+    },
+    "identified_by": {
+      "color": "#44ddaa",
+      "width": 2,
+      "label": "identified by"
+    },
+    "sent_to": {
+      "color": "#00ff88",
+      "width": 1,
+      "label": "sent to"
+    },
+    "received_from": {
+      "color": "#ff44aa",
+      "width": 1,
+      "label": "received from"
+    }
+  },
+  "ui": {
+    "title": "CORTEX INTELLIGENCE",
+    "subtitle": "Open Source Investigation Platform",
+    "accent_color": "#00ccff",
+    "danger_color": "#ff2244",
+    "warn_color": "#ffaa00",
+    "success_color": "#00ff88",
+    "bg_color": "#0a0e1a",
+    "font_family": "Consolas, 'JetBrains Mono', monospace",
+    "logo_text": "CORTEX"
+  },
+  "file_extensions": [
+    ".pdf",
+    ".txt",
+    ".csv",
+    ".html",
+    ".json",
+    ".docx",
+    ".md",
+    ".eml",
+    ".msg",
+    ".xml",
+    ".log",
+    ".xlsx",
+    ".rtf",
+    ".tsv",
+    ".yaml",
+    ".yml",
+    ".ini",
+    ".conf",
+    ".cfg"
+  ],
+  "max_content_bytes": 2000000
+}
