@@ -1,5 +1,7 @@
 import { joinSession } from "@github/copilot-sdk/extension";
-import { spawn } from "node:child_process";
+import { spawn, execSync, spawnSync } from "node:child_process";
+import { existsSync, statSync } from "node:fs";
+import { platform, hostname, cpus, totalmem, freemem } from "node:os";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { randomUUID } from "node:crypto";
@@ -8,7 +10,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const DAEMON_PATH = join(__dirname, "nexus_daemon.py");
 const DB_PATH = "C:\\Users\\andre\\LitigationOS\\litigation_context.db";
+const REPO_ROOT = "C:\\Users\\andre\\LitigationOS";
+const PIPELINE_DIR = join(REPO_ROOT, "00_SYSTEM", "pipeline");
 const BRIDGE_TIMEOUT = 60000; // 60s for bridge tools (multi-query orchestration)
+const CMD_TIMEOUT = 600000;   // 600s for command execution
+const MAX_CMD_OUTPUT = 250 * 1024; // 250 KB output cap for commands
+
+const PHASE_MAP = {
+    "1": "phase1_inventory.py", "2": "phase2_classify.py", "3": "phase3_extract.py",
+    "4a": "phase4a_pdf.py", "4b": "phase4b_docx.py", "4c": "phase4c_structured.py",
+    "4d": "phase4d_atomize.py", "4e": "phase4e_archive.py", "5": "phase5_brain_feed.py",
+    "7a": "phase7a_authority.py", "7c": "phase7c_chains.py", "8": "phase8_filing.py",
+    "12": "phase12_dedup.py", "13": "phase13_semantic.py", "14": "phase14_timeline.py",
+    "16": "phase16_convergence.py",
+    "autopilot": "autopilot.py", "filing": "filing_pipeline.py",
+    "status": "quick_status.py", "validate": "validate.py",
+};
 
 // Safety guards (RangeError prevention)
 const MAX_STDOUT_BYTES = 2 * 1024 * 1024;   // 2 MB cap for subprocess stdout
@@ -2059,6 +2076,229 @@ const session = await joinSession({
             handler: async (args) => {
                 const result = await callDaemon({ action: "dispatch_to_swarm", task: args.task });
                 return formatResult(result);
+            },
+        },
+
+        // ═══════════════════════════════════════════════════════════════
+        // AGENT MEMORY (ABSORBED from agent-memory MCP)
+        // ═══════════════════════════════════════════════════════════════
+        {
+            name: "memory_store",
+            description: "Store a fact in persistent agent memory for cross-session recall.",
+            parameters: {
+                type: "object",
+                properties: {
+                    subject: { type: "string", description: "Topic (1-2 words): naming, testing, auth, etc." },
+                    fact: { type: "string", description: "Clear, concise fact (<200 chars)." },
+                    citations: { type: "string", description: "Source file and line, or 'User input: ...'" },
+                    reason: { type: "string", description: "Why this fact matters for future tasks (2-3 sentences)." },
+                },
+                required: ["fact"],
+            },
+            handler: async (args) => {
+                const result = await callDaemon({ action: "memory_store", ...args });
+                if (result?.ok) return `✅ Memory stored (id: ${result.id}): ${args.fact}`;
+                return `❌ ${result?.error || "Failed to store memory"}`;
+            },
+        },
+        {
+            name: "memory_recall",
+            description: "Search agent memory for previously stored facts. FTS5 with LIKE fallback.",
+            parameters: {
+                type: "object",
+                properties: {
+                    query: { type: "string", description: "Search terms (FTS5 syntax: AND, OR, NOT, phrases)" },
+                    subject: { type: "string", description: "Optional subject filter" },
+                    limit: { type: "number", description: "Max results (default 20)" },
+                },
+            },
+            handler: async (args) => {
+                const result = await callDaemon({ action: "memory_recall", ...args });
+                return formatResult(result);
+            },
+        },
+        {
+            name: "memory_list",
+            description: "List recent agent memories with optional subject filter.",
+            parameters: {
+                type: "object",
+                properties: {
+                    subject: { type: "string", description: "Filter by subject" },
+                    limit: { type: "number", description: "Max results (default 20)" },
+                },
+            },
+            handler: async (args) => {
+                const result = await callDaemon({ action: "memory_list", ...args });
+                return formatResult(result);
+            },
+        },
+
+        // ═══════════════════════════════════════════════════════════════
+        // COMMAND RUNNER (ABSORBED from command-runner MCP — direct Node.js)
+        // Subprocess execution runs HERE, not through daemon, to avoid
+        // blocking daemon's single-threaded event loop on 600s timeouts.
+        // ═══════════════════════════════════════════════════════════════
+        {
+            name: "command-runner-exec_command",
+            description: "Execute a shell command. Returns stdout/stderr. Timeout 600s. Max output 250KB.",
+            parameters: {
+                type: "object",
+                properties: {
+                    command: { type: "string", description: "The shell command to execute." },
+                },
+                required: ["command"],
+            },
+            handler: async (args) => {
+                try {
+                    const out = execSync(args.command, {
+                        cwd: REPO_ROOT, shell: true, timeout: CMD_TIMEOUT,
+                        maxBuffer: MAX_CMD_OUTPUT, encoding: "utf-8",
+                        env: { ...process.env, PYTHONUTF8: "1" },
+                    });
+                    return safeTruncate(out || "(no output)", MAX_OUTPUT_CHARS, "stdout");
+                } catch (e) {
+                    const stdout = e.stdout ? safeTruncate(String(e.stdout), MAX_OUTPUT_CHARS, "stdout") : "";
+                    const stderr = e.stderr ? safeTruncate(String(e.stderr), MAX_OUTPUT_CHARS, "stderr") : "";
+                    if (e.killed) return `⏱️ Command timed out (${CMD_TIMEOUT / 1000}s)\n${stdout}\n${stderr}`;
+                    return `Exit code: ${e.status ?? "unknown"}\n${stdout}\n${stderr}`.trim();
+                }
+            },
+        },
+        {
+            name: "command-runner-exec_python",
+            description: "Execute a Python script with PYTHONUTF8=1. CWD set to script dir to avoid shadow modules.",
+            parameters: {
+                type: "object",
+                properties: {
+                    script_path: { type: "string", description: "Absolute or repo-relative path to .py script." },
+                    args: { type: "array", items: { type: "string" }, description: "Optional CLI args." },
+                },
+                required: ["script_path"],
+            },
+            handler: async (args) => {
+                const scriptPath = args.script_path.includes(":\\")
+                    ? args.script_path
+                    : join(REPO_ROOT, args.script_path);
+                if (!existsSync(scriptPath)) return `❌ Script not found: ${scriptPath}`;
+                const scriptDir = dirname(scriptPath);
+                const scriptArgs = ["-I", scriptPath, ...(args.args || [])];
+                try {
+                    const r = spawnSync("python", scriptArgs, {
+                        cwd: scriptDir, timeout: CMD_TIMEOUT, maxBuffer: MAX_CMD_OUTPUT,
+                        encoding: "utf-8",
+                        env: { ...process.env, PYTHONUTF8: "1" },
+                    });
+                    const stdout = r.stdout ? safeTruncate(r.stdout, MAX_OUTPUT_CHARS, "stdout") : "";
+                    const stderr = r.stderr ? safeTruncate(r.stderr, MAX_OUTPUT_CHARS, "stderr") : "";
+                    if (r.status === 0) return stdout || "(no output)";
+                    return `Exit code: ${r.status}\nSTDOUT:\n${stdout}\nSTDERR:\n${stderr}`.trim();
+                } catch (e) {
+                    return `❌ ${e.message}`;
+                }
+            },
+        },
+        {
+            name: "command-runner-exec_git",
+            description: "Execute a git command with --no-pager in the LitigationOS repo.",
+            parameters: {
+                type: "object",
+                properties: {
+                    args: { type: "string", description: "Git sub-command and arguments (e.g. 'status')." },
+                },
+                required: ["args"],
+            },
+            handler: async (args) => {
+                try {
+                    const cmd = `git -c core.fsmonitor=false --no-pager ${args.args}`;
+                    const out = execSync(cmd, {
+                        cwd: REPO_ROOT, timeout: 120000, maxBuffer: MAX_CMD_OUTPUT,
+                        encoding: "utf-8", env: { ...process.env, GIT_TERMINAL_PROMPT: "0" },
+                    });
+                    return safeTruncate(out || "(no output)", MAX_OUTPUT_CHARS, "git output");
+                } catch (e) {
+                    const out = e.stdout ? String(e.stdout) : "";
+                    const err = e.stderr ? String(e.stderr) : "";
+                    return `Exit: ${e.status ?? "?"}\n${out}\n${err}`.trim();
+                }
+            },
+        },
+        {
+            name: "command-runner-exec_pipeline_phase",
+            description: "Execute a LitigationOS pipeline phase by name.",
+            parameters: {
+                type: "object",
+                properties: {
+                    phase: { type: "string", description: "Phase identifier (e.g. '1', '4a', 'validate')." },
+                },
+                required: ["phase"],
+            },
+            handler: async (args) => {
+                const script = PHASE_MAP[args.phase];
+                if (!script) return `❌ Unknown phase '${args.phase}'. Valid: ${Object.keys(PHASE_MAP).join(", ")}`;
+                const scriptPath = join(PIPELINE_DIR, script);
+                if (!existsSync(scriptPath)) return `❌ Pipeline script not found: ${scriptPath}`;
+                try {
+                    const r = spawnSync("python", ["-I", scriptPath], {
+                        cwd: PIPELINE_DIR, timeout: CMD_TIMEOUT, maxBuffer: MAX_CMD_OUTPUT,
+                        encoding: "utf-8",
+                        env: { ...process.env, PYTHONUTF8: "1" },
+                    });
+                    const stdout = r.stdout ? safeTruncate(r.stdout, MAX_OUTPUT_CHARS, "stdout") : "";
+                    const stderr = r.stderr ? safeTruncate(r.stderr, MAX_OUTPUT_CHARS, "stderr") : "";
+                    if (r.status === 0) return stdout || "(phase completed, no output)";
+                    return `Phase '${args.phase}' failed (exit ${r.status}):\n${stdout}\n${stderr}`.trim();
+                } catch (e) {
+                    return `❌ ${e.message}`;
+                }
+            },
+        },
+        {
+            name: "command-runner-system_status",
+            description: "System health: Python version, disk space, DB size, git branch, OS details.",
+            parameters: { type: "object", properties: {} },
+            handler: async () => {
+                const lines = [];
+                lines.push(`🖥️ **System Status**`);
+                lines.push(`- OS: ${platform()} ${hostname()}`);
+                lines.push(`- CPUs: ${cpus().length}× ${cpus()[0]?.model || "unknown"}`);
+                lines.push(`- RAM: ${(totalmem() / 1073741824).toFixed(1)} GB total, ${(freemem() / 1073741824).toFixed(1)} GB free`);
+                try {
+                    const pyVer = execSync("python --version", { encoding: "utf-8", timeout: 5000 }).trim();
+                    lines.push(`- Python: ${pyVer}`);
+                } catch { lines.push("- Python: not found"); }
+                try {
+                    const info = statSync(DB_PATH);
+                    lines.push(`- DB: ${(info.size / 1048576).toFixed(1)} MB (${DB_PATH.split("\\").pop()})`);
+                } catch { lines.push("- DB: not found"); }
+                try {
+                    const branch = execSync("git -c core.fsmonitor=false --no-pager rev-parse --abbrev-ref HEAD", {
+                        cwd: REPO_ROOT, encoding: "utf-8", timeout: 10000,
+                    }).trim();
+                    const status = execSync("git -c core.fsmonitor=false --no-pager status --porcelain | head -5", {
+                        cwd: REPO_ROOT, encoding: "utf-8", timeout: 10000, shell: true,
+                    }).trim();
+                    lines.push(`- Git: ${branch} (${status ? status.split("\\n").length + " changes" : "clean"})`);
+                } catch { lines.push("- Git: error"); }
+                try {
+                    const diskCmd = platform() === "win32"
+                        ? 'wmic logicaldisk get size,freespace,caption /format:list'
+                        : 'df -h /';
+                    const disk = execSync(diskCmd, { encoding: "utf-8", timeout: 10000 }).trim();
+                    if (platform() === "win32") {
+                        const drives = disk.split(/\r?\n\r?\n/).filter(b => b.includes("Caption="));
+                        for (const block of drives.slice(0, 4)) {
+                            const cap = block.match(/Caption=(\S+)/)?.[1] || "?";
+                            const free = block.match(/FreeSpace=(\d+)/)?.[1];
+                            const total = block.match(/Size=(\d+)/)?.[1];
+                            if (free && total) {
+                                lines.push(`- ${cap} ${(+free / 1073741824).toFixed(1)}/${(+total / 1073741824).toFixed(1)} GB free`);
+                            }
+                        }
+                    } else {
+                        lines.push(`- Disk: ${disk}`);
+                    }
+                } catch { lines.push("- Disk: error reading"); }
+                return lines.join("\n");
             },
         },
     ],

@@ -3079,6 +3079,150 @@ def handle_dispatch_to_swarm(req):
 
 
 # ══════════════════════════════════════════════════════════════════════════
+# AGENT MEMORY (ABSORBED from agent-memory MCP — ZERO external dependency)
+# ══════════════════════════════════════════════════════════════════════════
+
+def _ensure_memory_table(conn):
+    """Create agent_memory table and FTS5 index if they don't exist."""
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS agent_memory (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            subject TEXT NOT NULL,
+            fact TEXT NOT NULL,
+            citations TEXT,
+            reason TEXT,
+            session_id TEXT,
+            created_at TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    try:
+        conn.execute("""
+            CREATE VIRTUAL TABLE IF NOT EXISTS agent_memory_fts
+            USING fts5(subject, fact, citations, reason,
+                       content=agent_memory, content_rowid=id)
+        """)
+    except Exception:
+        pass  # FTS5 index may already exist
+
+
+def handle_memory_store(req):
+    """Store a fact in persistent agent memory."""
+    conn = ConnectionPool.get_sqlite()
+    _ensure_memory_table(conn)
+
+    subject = req.get("subject", "").strip()
+    fact = req.get("fact", "").strip()
+    citations = req.get("citations", "").strip()
+    reason = req.get("reason", "").strip()
+    session_id = req.get("session_id", "")
+
+    if not fact:
+        return {"ok": False, "error": "fact is required"}
+
+    cur = conn.execute(
+        "INSERT INTO agent_memory (subject, fact, citations, reason, session_id) "
+        "VALUES (?, ?, ?, ?, ?)",
+        (subject, fact, citations, reason, session_id),
+    )
+    row_id = cur.lastrowid
+    conn.commit()
+
+    # Sync FTS5 index
+    try:
+        conn.execute(
+            "INSERT INTO agent_memory_fts(rowid, subject, fact, citations, reason) "
+            "VALUES (?, ?, ?, ?, ?)",
+            (row_id, subject, fact, citations, reason),
+        )
+        conn.commit()
+    except Exception:
+        pass
+
+    return {"ok": True, "id": row_id, "action": "memory_store"}
+
+
+def handle_memory_recall(req):
+    """Search agent memory via FTS5 with LIKE fallback."""
+    conn = ConnectionPool.get_sqlite()
+    _ensure_memory_table(conn)
+
+    query = req.get("query", "").strip()
+    subject = req.get("subject", "").strip()
+    limit = min(int(req.get("limit", 20)), 100)
+
+    if not query and not subject:
+        return {"ok": False, "error": "query or subject required"}
+
+    cols = ["id", "subject", "fact", "citations", "reason", "session_id", "created_at"]
+    rows = []
+
+    # FTS5 path
+    if query:
+        safe_q = sanitize_fts5(query)
+        if safe_q:
+            try:
+                rows = conn.execute(
+                    "SELECT am.id, am.subject, am.fact, am.citations, am.reason, "
+                    "am.session_id, am.created_at "
+                    "FROM agent_memory am "
+                    "JOIN agent_memory_fts fts ON am.id = fts.rowid "
+                    "WHERE agent_memory_fts MATCH ? "
+                    "ORDER BY rank LIMIT ?",
+                    (safe_q, limit),
+                ).fetchall()
+            except Exception:
+                pass
+
+    # LIKE fallback
+    if not rows:
+        term = query or subject
+        param = f"%{term}%"
+        try:
+            rows = conn.execute(
+                "SELECT id, subject, fact, citations, reason, session_id, created_at "
+                "FROM agent_memory "
+                "WHERE subject LIKE ? OR fact LIKE ? OR citations LIKE ? OR reason LIKE ? "
+                "ORDER BY created_at DESC LIMIT ?",
+                (param, param, param, param, limit),
+            ).fetchall()
+        except Exception:
+            rows = []
+
+    results = [dict(zip(cols, r)) for r in rows]
+    return {"ok": True, "rows": results, "count": len(results), "columns": cols}
+
+
+def handle_memory_list(req):
+    """List recent agent memories with optional subject filter."""
+    conn = ConnectionPool.get_sqlite()
+    _ensure_memory_table(conn)
+
+    limit = min(int(req.get("limit", 20)), 100)
+    subject = req.get("subject", "").strip()
+    cols = ["id", "subject", "fact", "citations", "reason", "session_id", "created_at"]
+
+    try:
+        if subject:
+            rows = conn.execute(
+                "SELECT id, subject, fact, citations, reason, session_id, created_at "
+                "FROM agent_memory WHERE subject LIKE ? "
+                "ORDER BY created_at DESC LIMIT ?",
+                (f"%{subject}%", limit),
+            ).fetchall()
+        else:
+            rows = conn.execute(
+                "SELECT id, subject, fact, citations, reason, session_id, created_at "
+                "FROM agent_memory ORDER BY created_at DESC LIMIT ?",
+                (limit,),
+            ).fetchall()
+    except Exception:
+        return {"ok": True, "rows": [], "count": 0, "columns": cols}
+
+    results = [dict(zip(cols, r)) for r in rows]
+    return {"ok": True, "rows": results, "count": len(results), "columns": cols}
+
+
+# ══════════════════════════════════════════════════════════════════════════
 # ACTION ROUTER
 # ══════════════════════════════════════════════════════════════════════════
 
@@ -3158,6 +3302,10 @@ HANDLERS = {
     "evolve_pages": handle_evolve_pages,
     # Fleet Dispatch (ABSORBED from MCP)
     "dispatch_to_swarm": handle_dispatch_to_swarm,
+    # Agent Memory (ABSORBED from agent-memory MCP)
+    "memory_store": handle_memory_store,
+    "memory_recall": handle_memory_recall,
+    "memory_list": handle_memory_list,
 }
 
 
