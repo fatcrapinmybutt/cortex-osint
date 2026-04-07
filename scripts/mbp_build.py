@@ -1,0 +1,410 @@
+#!/usr/bin/env python
+"""THEMANBEARPIG v19.0 SINGULARITY CONVERGENCE — PyInstaller Build Script.
+
+Generates a .spec file and builds a standalone THEMANBEARPIG.exe with
+all 6 satellite engines (Athena, Chronos, Cortex, Oracle, Prometheus, Automaton).
+
+Usage:
+    python -I scripts/mbp_build.py                    # One-dir build (default)
+    python -I scripts/mbp_build.py --onefile           # Single .exe
+    python -I scripts/mbp_build.py --windowed          # No console window
+    python -I scripts/mbp_build.py --name THEMANBEARPIG # Custom output name
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+APP_SCRIPT = REPO_ROOT / "scripts" / "themanbearpig.py"
+ENGINES_DIR = REPO_ROOT / "scripts" / "mbp_engines"
+
+# VIS_DIR: prefer V15 > V9 > V5 (same fallback as themanbearpig.py)
+VIS_DIR = None
+for ver in ("MANBEARPIG_V7", "MANBEARPIG_V15", "MANBEARPIG_V9", "MANBEARPIG_V5"):
+    candidate = REPO_ROOT / "08_MEDIA" / ver
+    if candidate.exists():
+        VIS_DIR = candidate
+        break
+if VIS_DIR is None:
+    VIS_DIR = REPO_ROOT / "08_MEDIA" / "MANBEARPIG_V15"  # fallback for messaging
+
+VIS_DEST = VIS_DIR.name if VIS_DIR.exists() else "MANBEARPIG_V15"
+BRAIN_DB = REPO_ROOT / "mbp_brain.db"
+ICON_PATH = VIS_DIR / "icon.ico" if VIS_DIR.exists() else REPO_ROOT / "icon.ico"
+SPEC_OUTPUT = REPO_ROOT / "THEMANBEARPIG.spec"
+DEFAULT_NAME = "THEMANBEARPIG"
+
+
+def _check_pyinstaller() -> bool:
+    """Return True if PyInstaller is importable."""
+    try:
+        import PyInstaller  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+
+def _collect_data_files() -> list[tuple[str, str]]:
+    """Build the datas list for PyInstaller: (source, dest_dir) tuples."""
+    datas: list[tuple[str, str]] = []
+
+    # HTML visualisation files (V15 preferred)
+    if VIS_DIR.exists():
+        for f in VIS_DIR.iterdir():
+            if f.is_file():
+                datas.append((str(f), VIS_DEST))
+    else:
+        print(f"WARNING: Vis directory not found: {VIS_DIR}", file=sys.stderr)
+
+    # V7 SELFEVOLVE visualization (always include alongside primary)
+    v7_dir = REPO_ROOT / "08_MEDIA" / "MANBEARPIG_V7"
+    if v7_dir.exists() and str(v7_dir) != str(VIS_DIR):
+        for f in v7_dir.iterdir():
+            if f.is_file():
+                datas.append((str(f), "MANBEARPIG_V7"))
+        print(f"  V7 SELFEVOLVE: {sum(1 for f in v7_dir.iterdir() if f.is_file())} files from {v7_dir}")
+
+    # Brain database — shipped alongside the exe, NOT embedded in onefile
+    if BRAIN_DB.exists():
+        datas.append((str(BRAIN_DB), "."))
+    else:
+        print(f"WARNING: Brain DB not found: {BRAIN_DB}", file=sys.stderr)
+
+    # Satellite engines package (mbp_engines/)
+    if ENGINES_DIR.exists():
+        for f in ENGINES_DIR.iterdir():
+            if f.is_file() and f.suffix == ".py":
+                datas.append((str(f), "mbp_engines"))
+        engine_count = sum(1 for f in ENGINES_DIR.glob("*.py") if f.name != "__init__.py")
+        print(f"  Satellite engines: {engine_count} found in {ENGINES_DIR}")
+    else:
+        print(f"WARNING: Engines directory not found: {ENGINES_DIR}", file=sys.stderr)
+
+    return datas
+
+
+def generate_spec(
+    name: str = DEFAULT_NAME,
+    onefile: bool = False,
+    windowed: bool = False,
+) -> str:
+    """Generate a PyInstaller .spec file as a string."""
+    datas = _collect_data_files()
+
+    # Format datas list for the spec
+    datas_str = "[\n"
+    for src, dst in datas:
+        # Use raw string repr to handle Windows backslashes
+        datas_str += f"        ({src!r}, {dst!r}),\n"
+    datas_str += "    ]"
+
+    # Hidden imports needed by pywebview on Windows + satellite engines
+    hidden_imports = [
+        "webview",
+        "webview.platforms.edgechromium",
+        "webview.platforms.winforms",
+        "clr",
+        "clr_loader",
+        "pythonnet",
+        "System",
+        "System.Windows.Forms",
+        "System.Drawing",
+        "System.Threading",
+        "http.server",
+        "socketserver",
+        "mbp_engines",
+        "mbp_engines.athena",
+        "mbp_engines.chronos",
+        "mbp_engines.cortex",
+        "mbp_engines.oracle",
+        "mbp_engines.prometheus",
+        "mbp_engines.automaton",
+        "mbp_engines.backend_bridge",
+        "mbp_engines.bleeding_edge_bridge",
+        "mbp_engines.intelligence_bridge",
+        "mbp_engines.operations_bridge",
+        "duckdb",
+        "lancedb",
+        "sentence_transformers",
+        "tantivy",
+    ]
+    hidden_str = repr(hidden_imports)
+
+    icon_line = ""
+    if ICON_PATH.exists():
+        icon_line = f"    icon={str(ICON_PATH)!r},"
+    else:
+        icon_line = "    icon=None,  # No icon.ico found — add one to 08_MEDIA/MANBEARPIG_V5/"
+
+    if onefile:
+        spec = f'''# -*- mode: python ; coding: utf-8 -*-
+# THEMANBEARPIG v19.0 SINGULARITY CONVERGENCE — PyInstaller Spec (one-file mode)
+# Generated by scripts/mbp_build.py
+#
+# Build with:  pyinstaller THEMANBEARPIG.spec
+#
+# NOTE: The 257+ MB mbp_brain.db is bundled as a data file.
+#       In one-file mode it is extracted to a temp directory at runtime.
+#       For faster startup, prefer one-dir mode (--onedir).
+
+block_cipher = None
+
+a = Analysis(
+    [{str(APP_SCRIPT)!r}],
+    pathex=[{str(REPO_ROOT)!r}],
+    binaries=[],
+    datas={datas_str},
+    hiddenimports={hidden_str},
+    hookspath=[],
+    hooksconfig={{}},
+    runtime_hooks=[],
+    excludes=["tkinter", "matplotlib", "numpy", "pandas", "scipy"],
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=block_cipher,
+    noarchive=False,
+)
+
+pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+
+exe = EXE(
+    pyz,
+    a.scripts,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    [],
+    name={name!r},
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    runtime_tmpdir=None,
+    console={not windowed},
+{icon_line}
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+)
+'''
+    else:
+        spec = f'''# -*- mode: python ; coding: utf-8 -*-
+# THEMANBEARPIG v19.0 SINGULARITY CONVERGENCE — PyInstaller Spec (one-dir mode)
+# Generated by scripts/mbp_build.py
+#
+# Build with:  pyinstaller THEMANBEARPIG.spec
+#
+# One-dir mode is RECOMMENDED for this project because:
+#   - mbp_brain.db is 257+ MB — one-file would extract it to temp on every launch
+#   - Faster startup: no temp extraction needed
+#   - Easier to update graph_data.json without rebuilding
+#   - 6 satellite engines (mbp_engines/) included as data files
+
+block_cipher = None
+
+a = Analysis(
+    [{str(APP_SCRIPT)!r}],
+    pathex=[{str(REPO_ROOT)!r}],
+    binaries=[],
+    datas={datas_str},
+    hiddenimports={hidden_str},
+    hookspath=[],
+    hooksconfig={{}},
+    runtime_hooks=[],
+    excludes=["tkinter", "matplotlib", "numpy", "pandas", "scipy"],
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=block_cipher,
+    noarchive=False,
+)
+
+pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+
+exe = EXE(
+    pyz,
+    a.scripts,
+    [],
+    exclude_binaries=True,
+    name={name!r},
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    console={not windowed},
+{icon_line}
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+)
+
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name={name!r},
+)
+'''
+
+    return spec
+
+
+def post_build_fix(name: str = DEFAULT_NAME) -> bool:
+    """Apply post-build fixes to the dist folder.
+
+    Creates the python3.12/lib-dynload directory that PyInstaller omits,
+    preventing 'No module named encodings' crash on some systems.
+    Returns True if fix was applied.
+    """
+    dist_dir = REPO_ROOT / "dist" / name
+    if not dist_dir.exists():
+        print(f"  dist/ folder not found: {dist_dir}", file=sys.stderr)
+        return False
+
+    internal = dist_dir / "_internal"
+    if not internal.exists():
+        # onefile mode — no _internal
+        return False
+
+    lib_dynload = internal / "python3.12" / "lib-dynload"
+    if lib_dynload.exists():
+        print(f"  lib-dynload already exists: {lib_dynload}")
+        return True
+
+    lib_dynload.mkdir(parents=True, exist_ok=True)
+    print(f"  Created: {lib_dynload}")
+    return True
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="THEMANBEARPIG v19.0 SINGULARITY CONVERGENCE — PyInstaller build"
+    )
+    parser.add_argument(
+        "--onefile", action="store_true",
+        help="Single-file EXE (slower startup due to 257MB DB extraction)"
+    )
+    parser.add_argument(
+        "--windowed", action="store_true",
+        help="No console window (--noconsole / -w)"
+    )
+    parser.add_argument(
+        "--name", type=str, default=DEFAULT_NAME,
+        help=f"Output executable name (default: {DEFAULT_NAME})"
+    )
+    parser.add_argument(
+        "--fix-build", action="store_true",
+        help="Apply post-build fixes (lib-dynload) to existing dist/ folder"
+    )
+    args = parser.parse_args()
+
+    if args.fix_build:
+        print("Applying post-build fixes...")
+        if post_build_fix(args.name):
+            print("Post-build fixes applied successfully.")
+        else:
+            print("Post-build fixes failed or not needed.", file=sys.stderr)
+        return
+
+    has_pyinstaller = _check_pyinstaller()
+
+    # -- Validate prerequisites ----------------------------------------
+    missing = []
+    if not APP_SCRIPT.exists():
+        missing.append(f"  - App script: {APP_SCRIPT}")
+    if not VIS_DIR.exists():
+        missing.append(f"  - Vis directory: {VIS_DIR}")
+    if not BRAIN_DB.exists():
+        missing.append(f"  - Brain DB: {BRAIN_DB}")
+
+    if missing:
+        print("WARNING: Missing files (build may fail):", file=sys.stderr)
+        for m in missing:
+            print(m, file=sys.stderr)
+        print()
+
+    # -- Generate spec file --------------------------------------------
+    spec_content = generate_spec(
+        name=args.name,
+        onefile=args.onefile,
+        windowed=args.windowed,
+    )
+
+    SPEC_OUTPUT.write_text(spec_content, encoding="utf-8")
+    print(f"Spec file written to: {SPEC_OUTPUT}")
+    print()
+
+    # -- Print build summary -------------------------------------------
+    mode = "one-file" if args.onefile else "one-dir (recommended)"
+    console = "windowed (no console)" if args.windowed else "console"
+    icon_status = "YES" if ICON_PATH.exists() else "NO (add icon.ico to 08_MEDIA/MANBEARPIG_V5/)"
+
+    datas = _collect_data_files()
+    total_mb = 0.0
+    for src, _ in datas:
+        p = Path(src)
+        if p.exists():
+            total_mb += p.stat().st_size / (1024 * 1024)
+
+    print("=" * 62)
+    print("  THEMANBEARPIG v19.0 SINGULARITY CONVERGENCE — Build")
+    print("=" * 62)
+    print(f"  Output name .... {args.name}.exe")
+    print(f"  Mode ........... {mode}")
+    print(f"  Console ........ {console}")
+    print(f"  Icon ........... {icon_status}")
+    print(f"  Vis directory .. {VIS_DIR.name if VIS_DIR.exists() else 'NOT FOUND'}")
+    print(f"  Engines ........ {sum(1 for f in ENGINES_DIR.glob('*.py') if f.name != '__init__.py') if ENGINES_DIR.exists() else 0} satellites")
+    print(f"  Data files ..... {len(datas)} files ({total_mb:.1f} MB)")
+    print(f"  Spec file ...... {SPEC_OUTPUT}")
+    print("-" * 62)
+
+    if not has_pyinstaller:
+        print()
+        print("  PyInstaller is NOT installed.")
+        print("  Install with:  pip install pyinstaller")
+        print()
+
+    print()
+    print("  To build, run:")
+    print()
+    print(f"    cd {REPO_ROOT}")
+    if not has_pyinstaller:
+        print("    pip install pyinstaller")
+    print(f"    pyinstaller {SPEC_OUTPUT.name}")
+    print()
+    print(f"  Output will be in: {REPO_ROOT / 'dist' / args.name}")
+    if args.onefile:
+        print()
+        print("  ⚠ One-file mode bundles the 257+ MB brain database.")
+        print("    Every launch extracts it to a temp folder — expect slow startup.")
+        print("    Consider one-dir mode (default) for faster startup.")
+    else:
+        print()
+        print("  The dist/ folder will contain:")
+        print(f"    dist/{args.name}/{args.name}.exe")
+        print(f"    dist/{args.name}/{VIS_DEST}/index.html")
+        print(f"    dist/{args.name}/{VIS_DEST}/graph_data.json")
+        print(f"    dist/{args.name}/mbp_engines/*.py")
+        print(f"    dist/{args.name}/mbp_brain.db")
+    print()
+    print("  POST-BUILD FIX (auto-applied if you run this script with --fix-build):")
+    print(f"    mkdir dist\\{args.name}\\_internal\\python3.12\\lib-dynload")
+    print("    (Prevents 'No module named encodings' crash on some systems)")
+    print()
+    print("=" * 62)
+
+
+if __name__ == "__main__":
+    main()
