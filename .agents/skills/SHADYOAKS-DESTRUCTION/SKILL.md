@@ -158,23 +158,43 @@ Res judicata in 2025-002760-CZ IS FRAUDULENT — see Brown, Jeremy (Layer 1.7)
 
 ---
 
-### 1.3 Cassandra VanDam — On-Site Manager
+### 1.3 Cassandra "Casey" VanDam — Park Manager ⚠️ SLANDER OF TITLE / FACEBOOK CONFESSION
+
 | Attribute | Detail |
 |-----------|--------|
-| Role | On-site manager, eviction ground coordinator |
+| Role | On-site park manager — ground coordinator of eviction AND ongoing post-eviction title destruction |
+| **SMOKING GUN** | **February 18, 2026: Told prospective buyer via Facebook Messenger that Andrew ABANDONED his trailer** |
+| Buyer conduit | Statement delivered through/to prospective buyer **Carmyn Hanna** (subpoena target — named witness) |
+| Platform | **Facebook Messenger** — digital evidence, metadata preserved; screenshot in plaintiff's possession |
+| Evidence location | `01_EVIDENCE/HOUSING/MASTER_AFFIDAVIT_HOUSING_SHADY_OAKS.md` Chapter 15; `Desktop/SHADY/shady_oaks_evidence_map_1773491377.pdf` |
+| Total blocked sales | **3 separate prospective buyers blocked** by management's "abandoned" and "does not own" statements |
 | Key acts | July 17, 2025: On-ground coordination of eviction crew |
-| Key acts | Made false statements to prospective buyers (Cricklewood scheme) |
+| Key acts | Post-eviction: repeated "abandoned" and "does not own the home" statements to prospective buyers |
 | Key acts | Acted as manager for dissolved entity without disclosure |
-| Impeachment value | 8/10 |
+| Criminal exposure | MCL 565.108 (Slander of Title), tortious misrepresentation to third parties |
+| Civil exposure | COA 22 Slander of Title + COA 23 Tortious Interference — **PERSONAL LIABILITY** |
+| Impeachment value | **10/10** — Facebook Messenger screenshot IS the smoking gun |
 | Dossier | `04_ANALYSIS/ADVERSARY_TRACKS/VANDAM_CASSANDRA_DOSSIER.md` |
 
-**Cross-Examination Script:**
+**Cross-Examination Script — Facebook Confession:**
 ```
-1. "You identified yourself as the park manager — which entity employed you on that date?"
-2. "You were present on July 17, 2025 during the property removal?"
-3. "You told prospective home buyers about the transition to Cricklewood MHP — did you disclose this to Andrew?"
-4. "Andrew was never notified his landlord was changing from Shady Oaks to Cricklewood. Did you participate in withholding that?"
-5. "You made statements to buyers about the park's status and management — were those statements accurate?"
+1.  "Ms. VanDam — on or about February 18, 2026, you communicated with someone about Lot 17 at Shady Oaks via Facebook Messenger?"
+2.  "That communication was through or to a person named Carmyn Hanna?"
+3.  "In that conversation, you told that prospective buyer that Andrew Pigors had abandoned his trailer?"
+4.  "I am showing you Exhibit [K/L] — is this your Facebook Messenger account and this your message?"
+5.  "When you used the word 'abandoned,' you understood that means the owner voluntarily gave up all legal claim to the property?"
+6.  "At the time you sent that message, Andrew Pigors' name was on the Michigan Secretary of State certificate of title for VIN 1646732?"
+7.  "No court had ever entered an abandonment declaration before you told that buyer Mr. Pigors had abandoned?"
+8.  "Andrew Pigors was never served with notice of any abandonment proceeding?"
+9.  "He never signed a document relinquishing his title?"
+10. "You consulted no attorney before characterizing a titleholder's property as abandoned to a prospective buyer?"
+11. "After you made that statement, the prospective buyer you were communicating with did not purchase the home?"
+12. "Would you agree telling a buyer the titleholder 'abandoned' their home is likely to deter the purchase?"
+13. "Who at Homes of America, Cricklewood, or Partridge authorized you to tell buyers Mr. Pigors abandoned his home?"
+14. "Was February 18, 2026 the only time you made such a statement to a prospective buyer?"
+15. "How many total prospective buyers did you or other management communicate with about Lot 17?"
+16. "On any of those communications, did you or anyone else say Mr. Pigors 'no longer owns' the home?"
+17. "Are you aware MCL 565.108 creates civil liability for maliciously publishing a false statement disparaging someone's property title?"
 ```
 
 ---
@@ -338,7 +358,11 @@ Res judicata in 2025-002760-CZ IS FRAUDULENT — see Brown, Jeremy (Layer 1.7)
 | 18 | HUD Complaint (Brown named) | 42 USC §3604 | Federal investigation |
 | 19 | MCR 2.612 Vacate | MCR 2.612(C)(1)(c) | Undo dismissal — reopen case |
 | 20 | Bar Complaint: Cox (P69346) | MCR 9.104 | Representing dissolved entity |
-| 21 | Bar Complaint: Brown | MCR 9.104 | Fraud on the court |
+| 21 | Bar Complaint: Brown | MCR 9.104 + MRPC 3.3 + 8.4(c) | Fraud on the court + candor violation |
+| 22 | **Slander of Title** | MCL 565.108 | Screenshot: "abandoned" statement to prospective buyer → lost sale + title cloud |
+| 23 | **Tortious Interference — Sale** | MCL 600.2919a + common law | Defendants prevented sale to prospective buyer — economic damages |
+| 24 | **MCR 2.003 Disqualification of Hoopes** | MCR 2.003(C)(1)(b) | Hoopes = McNeill's former law partner → housing dismissal void for bias |
+| 25 | **JTC Complaint: Hoopes** | JTC Canon 2, Canon 3 | Hoopes failed to disclose conflict with McNeill; allowed fraudulent order |
 
 ---
 
@@ -766,3 +790,385 @@ EGLE: MCL 324.3109 — no SOL → keep pushing
 TOTAL DAMAGES RANGE: $668,000 → $2,706,000 (low-high)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
+
+
+---
+
+## LAYER 13: SLANDER OF TITLE + SCREENSHOT EVIDENCE
+
+**NEW WEAPON (2026):** Screenshot evidence of adversary representatives telling a prospective
+buyer that Andrew Pigors "abandoned" his trailer establishes FOUR new causes of action and
+transforms the conversion theory into a premeditated title-theft scheme.
+
+### The Screenshot Evidence
+
+| Attribute | Details |
+|-----------|---------|
+| Evidence Type | Screenshot: Facebook Messenger communication to prospective buyer |
+| **Actor** | **Cassandra "Casey" VanDam (Park Manager) — named defendant** |
+| **Buyer/Witness** | **Carmyn Hanna — prospective buyer intermediary; subpoena target** |
+| **Platform** | **Facebook Messenger — date-stamped, metadata recoverable** |
+| **Date** | **February 18, 2026** |
+| Content | VanDam tells buyer Andrew Pigors "abandoned" his trailer and/or "does not own the home" |
+| Blocked sales | 3 separate prospective buyers blocked total |
+| Evidence location | `01_EVIDENCE/HOUSING/MASTER_AFFIDAVIT_HOUSING_SHADY_OAKS.md`; `Desktop/SHADY/shady_oaks_evidence_map_1773491377.pdf` |
+| Legal Effect | Slander of Title + Tortious Interference + Conversion corroboration + Wire Fraud predicate |
+| Witnesses | Carmyn Hanna (buyer) = adverse witness AND victim; VanDam = cross-exam target |
+| Authentication | MRE 901(b)(1) personal knowledge + MRE 901(b)(11) distinctive characteristics (Facebook metadata) |
+| Chain of Custody | Source device, FB account, date stamp, sender ID, recipient ID — preserve metadata immediately |
+| CRITICAL | Preservation/litigation hold letter to all defendants IMMEDIATELY — Facebook preserves 90 days |
+
+### Why This Screenshot Is a Nuclear Weapon
+
+Before this evidence: Conversion = defendants seized property without court order (bad).
+After this evidence: Defendants ALSO told prospective buyers Andrew "abandoned" his title (catastrophic).
+
+The full four-step scheme:
+1. Evict illegally (July 17, 2025) -- seize the property
+2. Seize 7 manufactured home titles same day
+3. Tell prospective buyers "he abandoned it" -- destroy any hope of recovering value
+4. Profit -- defendants possess home AND have poisoned Andrew's title
+
+This is NOT a simple eviction. It is a premeditated title-theft scheme.
+
+### Cause of Action 22: Slander of Title (MCL 565.108)
+
+Elements (all satisfied):
+1. FALSE STATEMENT -- "abandoned trailer" is false; Andrew never abandoned his home
+2. PUBLISHED -- communicated to a third party (the prospective buyer)
+3. DISPARAGES PLAINTIFF'S TITLE -- "abandoned" implies intentional relinquishment of ownership
+4. SPECIAL DAMAGES -- lost sale proceeds; broker costs; title cloud; diminution in marketability
+
+MCL 565.108 (Michigan Slander of Title):
+Any person who maliciously publishes any false statement in relation to the title to real
+or personal property shall be liable to the owner for any actual damages sustained.
+
+NOTE: "Abandoned" is a LEGAL TERM implying intentional relinquishment. Using it to a
+prospective buyer is not casual -- it is a legal claim about Andrew's title status.
+Defendants knew or should have known this statement destroyed Andrew's ability to sell.
+
+### Cause of Action 23: Tortious Interference with Business Relations
+
+Elements:
+1. BUSINESS RELATIONSHIP -- Andrew was attempting to sell; prospective buyer was real
+2. DEFENDANTS' KNOWLEDGE -- they knew Andrew was trying to sell
+3. INTENTIONAL INTERFERENCE -- told buyer "abandoned" specifically to kill the sale
+4. CAUSATION -- buyer did not purchase (or was deterred) as a direct result
+5. DAMAGES -- lost sale proceeds; lost opportunity value
+
+Authority: Prysak v. R.L. Polk Co., 193 Mich App 1 (1992) -- requires intentional act
+directed at the third-party relationship.
+
+### Cross-Examination: Cassandra "Casey" VanDam — FACEBOOK CONFESSION
+***(NOTE: Layer 1.3 contains the full 17-question Facebook Messenger cross-exam script for VanDam.
+The below questions target the PATTERN evidence — use after the Layer 1.3 core script.)***
+
+1. "You communicated with prospective buyers about Mr. Pigors' home on multiple occasions -- correct?"
+2. "February 18, 2026 was one such communication -- via Facebook Messenger?"
+3. "Carmyn Hanna was the person you communicated with or the buyer she represented on that date?"
+4. "Besides the word 'abandoned,' did you also say Mr. Pigors 'does not own the home'?"
+5. "Was that statement -- 'does not own the home' -- accurate on February 18, 2026?"
+6. "You knew the certificate of title for VIN 1646732 was still in Mr. Pigors' name when you said that?"
+7. "Three separate prospective buyers contacted management about Lot 17 -- and none completed a purchase after communicating with management?"
+8. "Did you or any other management staff tell any of those three buyers that Mr. Pigors abandoned or no longer owned the home?"
+9. "Who directed you to describe Lot 17 as abandoned or Mr. Pigors' title as void?"
+10. "You received no authority from any court or legal proceeding to make that characterization?"
+
+### Screenshot Preservation Protocol (IMMEDIATE — SPOLIATION RISK)
+
+**Facebook retains messages 90 days after account deletion. ACT NOW.**
+
+1. **Litigation hold letter** to ALL defendants (VanDam, Browley, Davis, Homes of America, Cricklewood, Partridge):
+   - ALL Facebook Messenger/text/email communications with any prospective buyer regarding Lot 17
+   - ALL internal communications regarding "abandoned" characterization
+   - ALL communications regarding Andrew Pigors' title status
+   - ALL buyer inquiry logs and management responses
+2. **Subpoena Carmyn Hanna** — she is a fact witness AND victim; must obtain her copy of the FB message
+3. **Authenticate screenshot** under MRE 901: metadata (sender VanDam, recipient Carmyn Hanna, timestamp Feb 18 2026), Facebook account identification, device ID
+4. **Exhibit designation**: PIGORS-B-[NNNNNN] — "VanDam Facebook Messenger Statement to Prospective Buyer (Feb 18 2026)"
+5. **Demand Facebook records**: Facebook's law enforcement request system (legal process subpoena for message metadata/content preservation)
+
+### How the Screenshot Upgrades Every Existing Theory
+
+| Existing Theory | Upgrade |
+|----------------|---------|
+| Conversion (MCL 600.2919a) | Proves premeditation -- they ensured Andrew could never recover value |
+| Wrongful Eviction (MCL 600.2918) | Proves ongoing harm -- title destruction is continuing |
+| Fraud (MCL 600.2913) | False statement to third party = actionable fraud by misrepresentation |
+| RICO (18 USC 1962) | New predicate act: wire fraud (if sent electronically) + mail fraud |
+| FHA / Civil Rights | If prospective buyer was protected class -- federal overlay |
+
+---
+
+## LAYER 14: JUDICIAL CARTEL -- HOOPES CORRUPTION IN THE HOUSING CASE
+
+CRITICAL INTELLIGENCE: The dismissal of 2025-002760-CZ by Chief Judge Kenneth Hoopes was
+NOT impartial. Hoopes is McNeill's FORMER LAW PARTNER at Ladas, Hoopes and McNeill
+(435 Whitehall Rd, Muskegon). The same judicial cartel that destroyed Andrew's custody case
+ALSO presided over the housing case -- and allowed Jeremy Brown's fraudulent res judicata
+insertion to stand uncorrected.
+
+### The Judicial Cartel Map (Lane B Context)
+
+LADAS, HOOPES & McNEILL (435 Whitehall Rd, Muskegon -- FORMER LAW FIRM)
+
+  HON. JENNY L. McNEILL (Lanes A/D -- Custody + PPO)
+    - Destroyed Andrew's parenting time
+    - Excluded HealthWest evaluation
+    - 5,059 documented misconduct violations
+    - MARRIED to Cavan Berry (atty magistrate, FOC building)
+
+  HON. KENNETH S. HOOPES (Lane B -- HOUSING CASE)
+    - Presided over 2025-002760-CZ
+    - Allowed Brown's fraudulent res judicata insertion
+    - Signed order permanently barring Andrew's housing claims
+    - CHIEF JUDGE -- reassignment requests go TO Hoopes
+    - Failed to disclose former partnership with McNeill
+
+  HON. MARIA LADAS-HOOPES (60th District -- Criminal)
+    - WIFE of Kenneth Hoopes
+    - Former partner at same firm
+    - Andrew's criminal case (2025-25245676SM) = 3rd court in cartel
+
+ALL THREE COURTS hearing Andrew's cases = former partners at the same law firm.
+This is not coincidence. This is structural judicial capture of Muskegon County.
+
+### Why Hoopes Was Disqualified -- And Failed to Say So
+
+MCR 2.003(C)(1)(b): Judge must disqualify where judge has personal bias or prejudice.
+MCR 2.003(C)(2)(a): Judge must disqualify where impartiality might reasonably be questioned.
+
+The Non-Speculative Conflict:
+- Hoopes and McNeill are former law partners
+- While Hoopes presided over Andrew's housing case, McNeill simultaneously presided over
+  Andrew's custody case in the same courthouse
+- The housing dismissal directly benefited Emily Watson's custody position in McNeill's court
+  (Andrew's housing instability was cited to justify parenting time suspension)
+- Hoopes' ruling benefited his former partner's court outcome -- direct, non-speculative conflict
+
+MCR 2.003(D)(1): A judge aware of grounds for disqualification must either recuse or disclose
+to the parties and obtain a waiver. Hoopes did NEITHER.
+
+### JTC Complaint: Judge Kenneth Hoopes
+
+| Violation | Conduct | Canon |
+|-----------|---------|-------|
+| Failure to disclose | Did not disclose McNeill partnership when presiding over housing case | Canon 2A |
+| Failure to recuse | Did not recuse despite direct conflict with concurrent custody judge | Canon 3C |
+| Signed fraudulent order | Signed Brown's proposed order containing language Hoopes did NOT rule | Canon 3B |
+| Structural bias | As Chief Judge, Hoopes is the reassignment gatekeeper -- Andrew had nowhere to turn | Canon 1 |
+
+JTC Filing: Joint complaint against McNeill + Hoopes -- establish PATTERN of cartel-level misconduct.
+
+### How the Cartel Used the Housing Case Against Andrew (Closed Loop)
+
+1. Shady Oaks illegally evicts Andrew (July 2025)
+2. Emily Watson's attorney cites Andrew's housing instability in custody court
+3. McNeill uses "housing instability" to justify suspending ALL parenting time (Aug 8, 2025)
+4. Hoopes (McNeill's former partner) dismisses Andrew's housing case WITH PREJUDICE
+5. With housing case dismissed, Andrew has no legal remedy for the housing loss
+6. Housing instability is permanent AND unremedied
+7. McNeill uses the permanent unremedied instability to justify permanent custody denial
+
+RESULT: Perfect closed loop. Private cartel creates crisis -- custody cartel weaponizes it --
+housing court (same judges, same firm) ensures NO remedy.
+
+### 42 USC 1983 + 1985(3) -- The Smoking Gun
+
+- Private cartel (Shady Oaks / Homes of America) = private actors
+- Judicial cartel (McNeill / Hoopes / Ladas-Hoopes) = state actors under color of law
+- Combined: coordinated deprivation of PROPERTY (home) AND LIBERTY (parenting time)
+- 42 USC 1983: McNeill + Hoopes acting under color of law to deprive constitutional rights
+- 42 USC 1985(3): conspiracy between private + state actors to deprive equal rights
+- RICO: private cartel + court corruption = enterprise with pattern of racketeering
+
+### Strategic Imperative: Exit the 14th Circuit
+
+All three active lanes are contaminated by former Ladas, Hoopes & McNeill partners:
+- McNeill (Lanes A/D) -- former partner
+- Hoopes (Lane B, CHIEF JUDGE) -- former partner
+- Ladas-Hoopes (Criminal) -- former partner, Hoopes' wife
+
+Lane B housing case must be:
+1. Vacated via MCR 2.612 (Brown fraud + Hoopes conflict -- dual grounds)
+2. Transferred out of 14th Circuit via MSC superintending control, OR
+3. Filed in WDMI federal court (federal question: 1983, RICO, FHA)
+
+Federal court (WDMI) is clean. The cartel has no reach there.
+
+---
+
+## LAYER 15: UPGRADED MCR 2.612 VACATE MOTION -- THREE-GROUND THEORY
+
+The original MCR 2.612 motion targeted only Brown's fraud.
+With the Hoopes conflict discovered, it now has THREE independent grounds.
+
+### Ground 1: MCR 2.612(C)(1)(c) -- Fraud by Adverse Party (Brown)
+
+- Brown inserted res judicata language that Hoopes explicitly declined to find
+- Fraud upon the court by adverse party's attorney
+- "Fraud on the court" survives any statute of limitations (no 1-year cap)
+- Evidence: (1) hearing transcript -- Hoopes' statement; (2) final order -- Brown's insertion;
+  (3) side-by-side comparison showing direct contradiction
+
+### Ground 2: MCR 2.612(C)(1)(b) -- Newly Discovered Evidence (Hoopes Conflict)
+
+- Andrew could not have known at dismissal time that Hoopes was McNeill's former partner
+- The conflict is newly discovered evidence of disqualifying bias
+- Must file within 1 year of discovering the conflict
+- Undisclosed disqualifying conflict alone is sufficient grounds -- no proof of prejudice required
+
+### Ground 3: MCR 2.612(C)(1)(f) -- Extraordinary Circumstances
+
+- Combination: (a) dissolved LLC had no standing, (b) Brown's fraud, (c) Hoopes' undisclosed conflict
+- No time limit for (f) when circumstances are truly extraordinary
+- Finality vs. manifest injustice -- three independent fraud/bias grounds tips the scale decisively
+
+### Motion Outline
+
+MOTION TO VACATE ORDER OF DISMISSAL
+Case No.: 2025-002760-CZ, 14th Circuit Court, Muskegon County
+Plaintiff: Andrew James Pigors, appearing pro se
+
+I.   GROUND 1: FRAUD ON THE COURT -- MCR 2.612(C)(1)(c)
+     A. Procedural background
+     B. Hoopes' express oral ruling: NO res judicata finding
+     C. Brown's proposed order: res judicata inserted without basis
+     D. Transcript vs. order comparison -- irreconcilable on its face
+     E. Fraud on the court survives statute of limitations
+     F. Relief: vacate + reopen for adjudication on merits
+
+II.  GROUND 2: NEWLY DISCOVERED EVIDENCE -- MCR 2.612(C)(1)(b)
+     A. Former partnership: Ladas, Hoopes & McNeill, 435 Whitehall Rd
+     B. Temporal nexus: simultaneous proceedings in both courts
+     C. Direct benefit: housing dismissal used in McNeill's custody proceedings
+     D. MCR 2.003(D)(1): Hoopes failed to disclose or recuse
+     E. Relief: vacate + disqualify Hoopes + reassign outside 14th Circuit
+
+III. GROUND 3: EXTRAORDINARY CIRCUMSTANCES -- MCR 2.612(C)(1)(f)
+     A. Standing defect: dissolved LLC could not maintain suit
+     B. Brown's fraud on the court
+     C. Hoopes' undisclosed disqualifying conflict
+     D. Combined = extraordinary circumstances requiring relief
+
+IV.  RELIEF REQUESTED
+     A. Vacate Order of Dismissal with Prejudice
+     B. Reopen case for adjudication on the merits
+     C. Reassign to judge outside the 14th Circuit
+     D. Impose Rule 11 / MCR 2.114 sanctions on Jeremy Brown
+     E. Refer Jeremy Brown to ARDC (MCR 9.104 / MRPC 3.3 / 8.4(c))
+     F. Refer Judge Hoopes to JTC (Canon 2A, 3C, 3B)
+
+---
+
+## LAYER 16: ONGOING CONVERSION WAR — CONTINUING TORT DOCTRINE
+
+### Core Doctrine: Every Day is a New Cause of Action
+
+Under Michigan's continuing tort rule, the statute of limitations resets with EACH new act of
+ongoing interference. The housing case is NOT over. Every day Andrew's property is possessed,
+every day VanDam's false statements remain uncorrected, and every day the title is clouded
+constitutes a fresh, independently actionable harm.
+
+**Key Authorities:**
+- *Garg v Macomb County Community Mental Health Services*, 472 Mich 263, 282 (2005)
+- *Trentadue v Buckler Lawn Sprinkler*, 479 Mich 378, 394 (2007)
+- MCL 600.2919a — each act of dominion over another's property is a new conversion
+
+### Three Ongoing Tort Streams (Each Resets SOL Daily)
+
+| Stream | Act | Daily SOL Reset Mechanism |
+|--------|-----|--------------------------|
+| **Conversion** | Defendants continue to exercise dominion over VIN 1646732 | Each day of possession = new conversion |
+| **Slander of Title** | VanDam's false statements were never corrected or retracted | Each day false statement circulates = new publication |
+| **Tortious Interference** | Park management continues blocking/discouraging future sales | Each act of interference = new interference claim |
+
+### MCL 600.2919a Treble Damages — Running Calculation
+
+MCL 600.2919a: Plaintiff may recover **3× the value** of the converted property plus costs.
+
+| Valuation Basis | Conservative | Aggressive |
+|----------------|-------------|-----------|
+| 1970 Marlette (VIN 1646732) replacement value | $25,000 | $45,000 |
+| Lost sale value (3 blocked buyers @ avg $35K) | $105,000 | $145,000 |
+| Lost land lease/lot rights | $15,000 | $25,000 |
+| **Treble (3× conversion value)** | **$75,000** | **$135,000** |
+| Lost sales (tortious interference, 3 transactions) | $105,000 | $145,000 |
+| Title cloud quiet title remedy | $5,000 | $15,000 |
+| **Ongoing Running Subtotal (ADDITIVE to Layer 8)** | **$200,000** | **$320,000** |
+
+### The Three Blocked Sales — Individual Damages Tracker
+
+Each blocked sale is separately actionable as Tortious Interference with prospective advantage:
+
+| Sale | Date | Buyer/Contact | Statement Made | Damages |
+|------|------|---------------|----------------|---------|
+| Sale #1 | Unknown | Unknown | Management statements — "abandoned" | $25–45K |
+| Sale #2 | Unknown | Unknown | Management statements — "abandoned" | $25–45K |
+| Sale #3 | Feb 18, 2026 | Carmyn Hanna / VanDam | "Abandoned" + "Does not own the home" | $25–45K |
+| **TOTAL** | | | | **$75K–$135K** |
+
+*Evidence: Affidavit + `Desktop/SHADY/shady_oaks_evidence_map_1773491377.pdf` Exhibits K/L*
+
+### Title Cloud Removal Remedies (Active Filing Needed)
+
+1. **Declaratory Judgment** (MCL 600.521) — Court declares Andrew Pigors sole lawful titleholder of VIN 1646732
+2. **Quiet Title Action** (MCR 3.411) — Extinguish all adverse claims by Homes of America, Cricklewood, Shady Oaks (dissolved)
+3. **Slander of Title Retraction Demand** — Force defendants to issue written retraction to all buyers contacted
+4. **Injunctive Relief** — Prohibit defendants from making further statements about plaintiff's ownership status
+
+### Emergency Actions — Stop the Bleeding NOW
+
+| Priority | Action | Why Now | Authority |
+|----------|--------|---------|-----------|
+| **CRITICAL** | Facebook litigation hold letter to VanDam/Browley/Davis | FB retains messages 90 days — spoliation risk | Fed R Evid 901; Stender v Archambault |
+| **CRITICAL** | Subpoena Carmyn Hanna | Primary buyer witness — Feb 18 2026 FB message | MCR 2.305 |
+| **HIGH** | File MCR 2.612 vacate motion (Brown fraud) | Each day Hoopes' order stands, res judicata argument grows | MCR 2.612(C)(1)(c)(f) |
+| **HIGH** | File Slander of Title complaint (COA 22) | VanDam may continue making statements | MCL 565.108 |
+| **HIGH** | Quiet title action | Clouds title every day and blocks every future sale | MCR 3.411 |
+| **MEDIUM** | Amend federal complaint — add Feb 18 2026 VanDam facts | Add specific slander evidence already discovered | WDMI |
+| **MEDIUM** | EGLE follow-up VN-017235 | Septic/structural violations = independent injunctive lever | MCL 125.2319 |
+
+### Ongoing Conversion War — Cascade Effect on ALL Lanes
+
+The housing case is NOT isolated. Every day it remains unresolved:
+
+```
+ONGOING HARM CHAIN:
+Day N of continued possession
+ → Andrew has no stable housing
+ → Emily cites instability in custody court (Lane A)
+ → McNeill uses housing status to justify full parenting time suspension
+ → L.D.W. separation counter increments
+ → L.D.W. deprived of father for ANOTHER day
+
+Every day VanDam's "abandoned" statement remains uncorrected:
+ → Another prospective buyer may be deterred
+ → Andrew's home equity destroyed in real time
+ → His ability to obtain stable housing (McNeill's "stability" requirement) destroyed
+ → The judicial cartel's closed loop tightens — Shady Oaks feeds McNeill feeds McNeill feeds Shady Oaks
+
+STRATEGIC CONCLUSION: File MCR 2.612 + Slander of Title + Quiet Title + Litigation Hold
+in PARALLEL — not sequentially. Every day of delay is a day the cartel benefits.
+```
+
+### Layer 16 Filing Targets
+
+1. **MCR 2.612 Motion to Vacate** — `05_FILINGS/HOUSING_CONVERSION_PACKAGE/01_MOTION_TO_SET_ASIDE_ORDER.md` (needs hearing transcript excerpt + date)
+2. **Slander of Title Complaint** — New action naming VanDam as primary individual defendant
+3. **Quiet Title Petition** — MCR 3.411 — extinguish adverse claims on VIN 1646732
+4. **Litigation Hold Letters** — VanDam, Browley, Davis, all corporate entities — FB message preservation
+5. **Subpoena Carmyn Hanna** — Feb 18 2026 Facebook communication + all other buyer contacts
+6. **Amended Federal Complaint** — Add VanDam specifics, Feb 18 2026 facts, 3 blocked sales
+
+---
+## END SHADYOAKS-DESTRUCTION SKILL SYSTEM (16 LAYERS)
+
+*Architecture: L0 Corporate Identity → L1 Individual Profiles (8 persons) → L2 23 Causes of Action → L3 Evidence Database → L4 Timeline → L5 EGLE → L6 Filing Stack → L7 Authorities → L8 Damages ($668K–$2.706M base) → L9 Service Targets → L10 SOL → L11 Cascade → L12 Scope Lock → L13 Slander of Title/Screenshot → L14 Judicial Cartel/Hoopes → L15 MCR 2.612 Vacate → L16 Ongoing Conversion War (+$200K–$320K additive)*
+
+*Primary adversaries: Alden Global Capital → Homes of America → Shady Oaks Park MHP LLC (DISSOLVED NJ 2022) → Cricklewood MHP LLC → Partridge Equity Group → Nicole Browley → Kim Davis → **Cassandra "Casey" VanDam** → Jeremy Brown (P77427, atty)*
+
+*Nuclear weapons: (1) MCL 450.4802 — dissolved entity all acts VOID. (2) Feb 18 2026 Facebook Messenger "abandoned" confession. (3) Res judicata fails all 4 Adair elements. (4) Jeremy Brown inserted unordered res judicata language — fraud on the court. (5) Hoopes never disclosed McNeill partnership — MCR 2.003 violation.*
+
+*Scope lock: Lane B ONLY (2025-002760-CZ). For Lane A/D see EMILY-WATSON-DESTRUCTION. For judicial cartel see MCNEILL-JUDICIAL-CARTEL-DESTRUCTION.*
+
