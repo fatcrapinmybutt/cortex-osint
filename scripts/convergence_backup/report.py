@@ -1,0 +1,183 @@
+"""Generate OMEGA convergence certification report as Markdown.
+
+Consumes the output of ConvergenceCertifier.certify_all() and
+WiringValidator.validate_all() and writes a formatted report to
+04_ANALYSIS/convergence_report.md.
+"""
+import json
+from datetime import datetime, date
+from pathlib import Path
+
+REPO_ROOT = Path(r"C:\Users\andre\LitigationOS")
+REPORT_PATH = REPO_ROOT / "04_ANALYSIS" / "convergence_report.md"
+SEPARATION_ANCHOR = date(2025, 7, 29)
+
+STATUS_ICONS = {
+    "PASS": "✅",
+    "WARN": "⚠️",
+    "FAIL": "❌",
+    "ERROR": "💥",
+}
+
+TIER_BADGES = {
+    "ΩΩΩ TRANSCENDENT": "🏆 ΩΩΩ TRANSCENDENT",
+    "ΩΩ APEX": "🥇 ΩΩ APEX",
+    "Ω ELITE": "🥈 Ω ELITE",
+    "STANDARD": "🔧 STANDARD",
+}
+
+
+def generate_report(
+    certification: dict,
+    wiring: dict | None = None,
+    output_path: Path | None = None,
+) -> str:
+    """Build a Markdown convergence report and write to disk.
+
+    Parameters
+    ----------
+    certification : dict
+        Result from ``ConvergenceCertifier.certify_all()``.
+    wiring : dict, optional
+        Result from ``WiringValidator.summary()``.
+    output_path : Path, optional
+        Override default output location.
+
+    Returns
+    -------
+    str
+        The Markdown report text.
+    """
+    out = output_path or REPORT_PATH
+    sep_days = (date.today() - SEPARATION_ANCHOR).days
+    tier = certification.get("tier", "UNKNOWN")
+    badge = TIER_BADGES.get(tier, tier)
+    score = certification.get("overall_score", 0)
+    ts = certification.get("timestamp", datetime.now().isoformat())
+
+    lines: list[str] = []
+
+    # -- Header --------------------------------------------------------
+    lines.append(f"# {badge}")
+    lines.append("")
+    lines.append(f"**Overall Score:** {score}/100")
+    lines.append(f"**Certification Tier:** {tier}")
+    lines.append(f"**Father–Son Separation:** {sep_days} days")
+    lines.append(f"**Timestamp:** {ts}")
+    lines.append("")
+    lines.append(
+        f"| Passed | Warned | Failed |"
+    )
+    lines.append("| :---: | :---: | :---: |")
+    lines.append(
+        f"| {certification.get('passed', 0)} | "
+        f"{certification.get('warned', 0)} | "
+        f"{certification.get('failed', 0)} |"
+    )
+    lines.append("")
+
+    # -- Certification checks table ------------------------------------
+    lines.append("## Certification Checks")
+    lines.append("")
+    lines.append("| # | Check | Score | Status | Detail |")
+    lines.append("|---|-------|------:|:------:|--------|")
+
+    checks: dict = certification.get("checks", {})
+    for idx, (name, info) in enumerate(checks.items(), 1):
+        icon = STATUS_ICONS.get(info.get("status", ""), "?")
+        detail = info.get("detail", "").replace("|", "\\|")
+        lines.append(
+            f"| {idx} | **{name}** | {info.get('score', 0)} | "
+            f"{icon} {info.get('status', '?')} | {detail} |"
+        )
+
+    lines.append("")
+
+    # -- Wiring validation (optional) ----------------------------------
+    if wiring:
+        lines.append("## Wiring Validation")
+        lines.append("")
+        w_score = wiring.get("wiring_score", 0)
+        w_max = wiring.get("wiring_max", 100)
+        w_passed = wiring.get("passed", 0)
+        w_total = wiring.get("total", 0)
+        lines.append(
+            f"**Wiring Score:** {w_score}/{w_max} "
+            f"({w_passed}/{w_total} connections verified)"
+        )
+        lines.append("")
+        lines.append("| # | Connection | OK | Score | Detail |")
+        lines.append("|---|------------|:--:|------:|--------|")
+
+        for idx, chk in enumerate(wiring.get("checks", []), 1):
+            ok_icon = "✅" if chk.get("ok") else "❌"
+            detail = chk.get("detail", "").replace("|", "\\|")
+            lines.append(
+                f"| {idx} | {chk.get('name', '?')} | {ok_icon} | "
+                f"{chk.get('score', 0)} | {detail} |"
+            )
+
+        lines.append("")
+
+    # -- Recommendations -----------------------------------------------
+    lines.append("## Recommendations")
+    lines.append("")
+
+    issues = [
+        (name, info)
+        for name, info in checks.items()
+        if info.get("status") in ("WARN", "FAIL", "ERROR")
+    ]
+
+    if issues:
+        for name, info in issues:
+            icon = STATUS_ICONS.get(info.get("status", ""), "?")
+            lines.append(f"- {icon} **{name}** (score {info.get('score', 0)}): {info.get('detail', 'N/A')}")
+    else:
+        lines.append("All checks passed — system is fully certified. 🎉")
+
+    if wiring:
+        wiring_issues = [
+            c for c in wiring.get("checks", []) if not c.get("ok")
+        ]
+        if wiring_issues:
+            lines.append("")
+            lines.append("### Wiring Issues")
+            for chk in wiring_issues:
+                lines.append(f"- ❌ **{chk.get('name', '?')}**: {chk.get('detail', 'N/A')}")
+
+    lines.append("")
+
+    # -- Footer --------------------------------------------------------
+    lines.append("---")
+    lines.append(
+        f"*Generated by OMEGA Convergence Certifier v1.0.0 at {ts}*"
+    )
+    lines.append("")
+
+    report_text = "\n".join(lines)
+
+    # Write report
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(report_text, encoding="utf-8")
+
+    return report_text
+
+
+# ===================================================================
+# CLI entry point
+# ===================================================================
+
+if __name__ == "__main__":
+    from .certifier import ConvergenceCertifier
+    from .wiring import WiringValidator
+
+    with ConvergenceCertifier() as cert:
+        cert_result = cert.certify_all()
+
+    with WiringValidator() as wv:
+        wv.validate_all()
+        wiring_result = wv.summary()
+
+    report = generate_report(cert_result, wiring_result)
+    print(report)
