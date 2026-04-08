@@ -200,7 +200,17 @@ function formatResult(data) {
         return out;
     }
 
-    if (!data.rows || data.rows.length === 0) return "No results found.";
+    if (data.rows && data.rows.length === 0) return "No results found.";
+    if (!data.rows) {
+        // Custom response structure (case_health, self_test, convergence, etc.)
+        const skip = new Set(["ok", "id"]);
+        const display = {};
+        for (const [k, v] of Object.entries(data)) {
+            if (!skip.has(k)) display[k] = v;
+        }
+        if (Object.keys(display).length === 0) return "No results found.";
+        return "```json\n" + JSON.stringify(display, null, 2) + "\n```";
+    }
 
     const displayRows = data.rows.length > MAX_FORMAT_ROWS
         ? data.rows.slice(0, MAX_FORMAT_ROWS)

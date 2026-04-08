@@ -300,14 +300,8 @@ def _validate_path(p):
 
 
 # ── Table Existence Check ─────────────────────────────────────────────────
-
-def _table_exists(conn, table_name):
-    """Check if a table exists in the database."""
-    row = conn.execute(
-        "SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name=?",
-        (table_name,)
-    ).fetchone()
-    return row[0] > 0 if row else False
+# NOTE: Full unified definition at line ~1301 (after pool is initialized).
+# Do not redefine _table_exists here — it accepts both (name) and (conn, name).
 
 
 # ── Evolution Helpers (ported from MCP db.py) ─────────────────────────────
@@ -1298,10 +1292,15 @@ def handle_deadlines(req):
 # ══════════════════════════════════════════════════════════════════════════
 
 
-def _table_exists(table_name):
-    """Check if a table exists in the database."""
+def _table_exists(conn_or_name, table_name=None):
+    """Check if a table exists. Accepts _table_exists(name) or _table_exists(conn, name)."""
     try:
-        row = pool.sqlite.execute(
+        if table_name is None:
+            table_name = conn_or_name
+            conn = pool.sqlite
+        else:
+            conn = conn_or_name
+        row = conn.execute(
             "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?",
             (table_name,)
         ).fetchone()
