@@ -1701,8 +1701,8 @@ def handle_get_vehicle_map(req):
                     text = (row[2] or "").lower()
                     if any(kw in text for kw in ["vehicle", "authority", "element", "deadline", "relief"]):
                         results.append({"file": row[0], "heading": row[1], "excerpt": (row[2] or "")[:500]})
-            except Exception:
-                pass
+            except Exception as e:
+                sys.stderr.write(f"[NEXUS] get_vehicle_map FTS5 error: {e}\n")
 
     if not results and _table_exists("md_sections"):
         try:
@@ -1714,8 +1714,8 @@ def handle_get_vehicle_map(req):
                    LIMIT 20""", (f"%{relief_type}%",)
             )
             results = [{"file": r[0], "heading": r[1], "excerpt": r[2]} for r in cur.fetchall()]
-        except Exception:
-            pass
+        except Exception as e:
+            sys.stderr.write(f"[NEXUS] get_vehicle_map LIKE error: {e}\n")
 
     return {"ok": True, "vehicle_map": results, "count": len(results)}
 
@@ -1765,8 +1765,8 @@ def handle_adversary_threats(req):
             )
             columns = [desc[0] for desc in cur.description]
             results = [dict(zip(columns, r)) for r in cur.fetchall()]
-        except Exception:
-            pass
+        except Exception as e:
+            sys.stderr.write(f"[NEXUS] adversary_threats query error: {e}\n")
 
     return {"ok": True, "threats": results, "count": len(results)}
 
@@ -1782,7 +1782,8 @@ def handle_filing_pipeline(_req):
                 columns = [desc[0] for desc in cur.description]
                 results = [dict(zip(columns, r)) for r in cur.fetchall()]
                 return {"ok": True, "pipeline": results, "count": len(results), "source": table}
-            except Exception:
+            except Exception as e:
+                sys.stderr.write(f"[NEXUS] filing_pipeline {table} error: {e}\n")
                 continue
 
     return {"ok": True, "pipeline": [], "count": 0, "note": "No filing pipeline table found"}
@@ -1811,8 +1812,8 @@ def handle_get_subagent_spec(req):
                     text = row[2] or ""
                     if "agent" in text.lower() or agent_name.lower() in text.lower():
                         results.append({"file": row[0], "heading": row[1], "excerpt": text[:1000]})
-            except Exception:
-                pass
+            except Exception as e:
+                sys.stderr.write(f"[NEXUS] get_subagent_spec FTS5 error: {e}\n")
 
     if not results and _table_exists("md_sections"):
         try:
@@ -1822,8 +1823,8 @@ def handle_get_subagent_spec(req):
                 (f"%{agent_name}%",)
             )
             results = [{"file": r[0], "heading": r[1], "excerpt": r[2]} for r in cur.fetchall()]
-        except Exception:
-            pass
+        except Exception as e:
+            sys.stderr.write(f"[NEXUS] get_subagent_spec LIKE error: {e}\n")
 
     return {"ok": True, "agent_spec": results, "count": len(results)}
 
@@ -1858,8 +1859,8 @@ def handle_evolution_stats(_req):
             if row:
                 stats.update({"md_files": row[0] or 0, "txt_files": row[1] or 0,
                               "pdf_files": row[2] or 0, "files_evolved": row[3] or 0})
-        except Exception:
-            pass
+        except Exception as e:
+            sys.stderr.write(f"[NEXUS] evolution_stats md_sections error: {e}\n")
 
     if _table_exists("md_cross_refs"):
         try:
@@ -1867,8 +1868,8 @@ def handle_evolution_stats(_req):
                 "SELECT ref_type, COUNT(*) AS cnt FROM md_cross_refs GROUP BY ref_type ORDER BY cnt DESC"
             )
             stats["cross_ref_types"] = [{"type": r[0], "count": r[1]} for r in cur.fetchall()]
-        except Exception:
-            pass
+        except Exception as e:
+            sys.stderr.write(f"[NEXUS] evolution_stats cross_refs error: {e}\n")
 
     return {"ok": True, "evolution": stats}
 
@@ -1999,8 +2000,8 @@ def handle_convergence_status(_req):
                 "SELECT status, COUNT(*) AS cnt FROM convergence_domains GROUP BY status"
             )
             status["domain_status"] = {r[0]: r[1] for r in cur.fetchall()}
-        except Exception:
-            pass
+        except Exception as e:
+            sys.stderr.write(f"[NEXUS] convergence_status domains error: {e}\n")
 
     if _table_exists("convergence_waves"):
         try:
@@ -2008,8 +2009,8 @@ def handle_convergence_status(_req):
                 "SELECT wave_id, wave_name, status FROM convergence_waves WHERE status != 'COMPLETE' ORDER BY wave_number LIMIT 5"
             )
             status["pending_waves"] = [{"wave_id": r[0], "name": r[1], "status": r[2]} for r in cur.fetchall()]
-        except Exception:
-            pass
+        except Exception as e:
+            sys.stderr.write(f"[NEXUS] convergence_status waves error: {e}\n")
 
     total = sum(status["core_tables"].values())
     if total > 500000:
