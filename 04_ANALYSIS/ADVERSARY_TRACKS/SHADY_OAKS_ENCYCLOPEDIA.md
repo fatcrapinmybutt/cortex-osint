@@ -1510,5 +1510,321 @@ Federal RICO, 18 USC 1962(c)+(d), requires: (1) an enterprise, (2) a pattern of 
 
 ---
 
-*Encyclopedia last updated: §35–§40 added — Federal RICO, Michigan RICO, MSC MCR 7.306, COA/Brown Fraud, JTC, HUD/FHA. Total sections: 40. 28 prayers for relief in brain DB + main DB.*  
+## §41 — THEMANBEARPIG Integration
+
+**Status**: Lane B fully wired into THEMANBEARPIG visualization and pywebview API.
+
+### get_lane_b_prayers() — Confirmed Active
+- **Location**: `scripts/themanbearpig.py` (line 512, inside pywebview API class)
+- **Returns**: 28 prayers for relief + 5 `damages_aggregate` rows sourced live from `litigation_context.db`
+- **Exposed as**: `window.pywebview.api.get_lane_b_prayers()` — auto-available in the THEMANBEARPIG browser window
+- **Data sources**: `prayers_for_relief` table (Lane B filter) + `damages_aggregate` table (Lane B filter)
+- **Trigger**: Called on Lane B node click in 13-layer force graph
+
+### THEMANBEARPIG Layer Coverage — Lane B
+| Layer | Data Source | Status |
+|-------|-------------|--------|
+| Evidence | `evidence_quotes` (65 items) | ✅ Wired |
+| Timeline | `timeline_events` (45 events) | ✅ Wired |
+| Contradictions | `contradiction_map` (24 rows) | ✅ Wired |
+| Impeachment | `impeachment_matrix` (9 profiles) | ✅ Wired |
+| Prayers | `prayers_for_relief` (28 rows) | ✅ Wired |
+| Damages | `damages_aggregate` (5 rows) | ✅ Wired |
+| Judicial Violations | `judicial_violations` (3 rows) | ✅ Wired |
+
+---
+
+## §42 — Wave 3–4 DB Sync Status
+
+**All Lane B data confirmed synced to `litigation_context.db` as of April 2026.**
+
+### Table-by-Table Sync Report
+
+| Table | Source | Items Synced | Status |
+|-------|--------|-------------|--------|
+| `evidence_quotes` | `evidence_registry` (65) + `coercion_emails` (4) | 69 | ✅ Complete |
+| `timeline_events` | Shady Oaks master timeline | 45 | ✅ Complete |
+| `contradiction_map` | Contradictions corpus | 24 | ✅ Complete |
+| `judicial_violations` | Hoopes + Ladas-Hoopes violations | 3 | ✅ Complete |
+| `impeachment_matrix` | Witness cross-exam profiles | 9 | ✅ Complete |
+| `prayers_for_relief` | 28 Lane B prayers | 28 | ✅ Complete |
+| `damages_aggregate` | 5 Lane B damage categories | 5 | ✅ Complete |
+
+### Judicial Violations Synced (3 Records)
+1. **Hon. Kenneth Hoopes** — Denial of emergency hearing while on vacation; failure to disclose prior law partner relationship (McNeill); dismissal without prejudice converted to with prejudice via Brown fraud
+2. **Hon. Maria Ladas-Hoopes** — Former law partner of McNeill at Ladas, Hoopes & McNeill; presided over eviction of a titled homeowner without jurisdiction; failed to recuse
+3. **Hon. Kenneth Hoopes** — Acceptance of Brown's res judicata insertion without independent review; order language diverges from oral ruling
+
+### Verification Query
+```sql
+SELECT tbl, COUNT(*) FROM (
+  SELECT 'evidence_quotes' tbl FROM evidence_quotes WHERE lane='B'
+  UNION ALL SELECT 'timeline_events' FROM timeline_events WHERE lane='B'
+  UNION ALL SELECT 'contradiction_map' FROM contradiction_map WHERE lane='B'
+  UNION ALL SELECT 'judicial_violations' FROM judicial_violations WHERE lane='B'
+  UNION ALL SELECT 'impeachment_matrix' FROM impeachment_matrix WHERE lane='B'
+) GROUP BY tbl;
+```
+
+---
+
+## §43 — MCR 2.612(C)(1)(c) Motion — Jeremy Brown Fraud
+
+### The Core Fraud
+
+**Jeremy Brown P77427**, attorney for Shady Oaks Park MHP LLC, **inserted res judicata language into a separate dismissal order** in Hon. Kenneth Hoopes' court (Case 2025-002760-CZ). The inserted language did not reflect what the court orally ruled. This constitutes:
+
+- **MCR 2.612(C)(1)(c)**: Fraud, misrepresentation, or other misconduct of an adverse party
+- **MCR 2.612(C)(1)(d)**: The judgment is void (premised on fraudulent insertion; court had no authority to rule what was not before it)
+
+### Why Res Judicata Fails All 4 Elements — Adair v Michigan, 470 Mich 105 (2004)
+
+The Michigan Supreme Court in *Adair v State of Michigan*, 470 Mich 105, 680 NW2d 386 (2004), held that res judicata requires:
+1. A final decision on the merits by a court of competent jurisdiction
+2. The same parties or their privies
+3. The same claims or causes of action
+4. An opportunity to have litigated the matter
+
+**All four fail here:**
+
+| Element | Why It Fails |
+|---------|-------------|
+| (1) Final decision on the merits | Cricklewood MHP LLC / prior action was dismissed; no merits ruling. A dismissal without prejudice is not a final merits adjudication |
+| (2) Same parties | Cricklewood MHP LLC ≠ Shady Oaks Park MHP LLC. Different registered entities, different NJ/FL/TX registrations, different principals signing documents. Identity of parties is absent |
+| (3) Same claims | Prior action involved lease dispute under Cricklewood entity. Current action involves titled homeowner rights, post-eviction torts, RICO, LARA violations — entirely different claims |
+| (4) Dissolved LLC = void judgment | Shady Oaks Park MHP LLC was dissolved in New Jersey in 2022. Under MCL 450.4802, a dissolved LLC has no legal capacity to sue, be sued, or hold any court judgment. Any judgment entered in favor of or against Shady Oaks Park MHP LLC is void ab initio |
+
+### Brown's Forgery Allegation — Abandoned
+
+- Brown or his client alleged Andrew "forged" documents or damaged locks
+- **No criminal charges were ever filed**
+- **No conviction exists**
+- Andrew has **photographic evidence** of what was posted on his door (the accusatory notice)
+- Under Michigan law, an abandoned criminal allegation cannot serve as a predicate for civil liability; it can only be used against the accuser (malicious prosecution, abuse of process)
+- This abandoned allegation is itself impeachment evidence against Brown: why make a forgery accusation in court pleadings if no charges were filed?
+
+### Motion Filing Target
+- **Court**: 14th Circuit Court, Muskegon County
+- **Case**: 2025-002760-CZ
+- **Judge**: Hon. Kenneth Hoopes (motion to recuse Hoopes simultaneously)
+- **SOL**: MCR 2.612(C)(2) — motion must be filed within "reasonable time"; (c) and (d) grounds have no absolute 1-year bar (unlike (a) and (b))
+- **File**: `05_FILINGS/LANE_B_MCR_2612_MOTION_BROWN.md`
+
+---
+
+## §44 — SOL Watchdog — Critical Deadlines
+
+### 🔴 CRITICAL (≤99 Days from April 9, 2026)
+
+| Deadline | Date | Claim | SOL Basis | Days Remaining |
+|----------|------|-------|-----------|----------------|
+| **HUD Fair Housing** | **July 17, 2026** | FHA § 3610; MCL 37.2502 familial status | 1 year from last discriminatory act (July 17, 2025 eviction) | **~99 days** |
+| **MCL 600.2918 Wrongful Eviction** | **July 17, 2026** | Wrongful eviction from titled chattel | 1 year SOL from unlawful exclusion | **~99 days** |
+
+### 🟠 URGENT (1–2 Years)
+
+| Deadline | Date | Claim | SOL Basis |
+|----------|------|-------|-----------|
+| **42 USC §1983** | July 17, 2027 | Constitutional deprivation — cartel eviction | 3 years (Michigan personal injury SOL applied to §1983 per *Wilson v Garcia*) |
+| **MCL 600.5805(2) Conversion** | July 17, 2028 | Conversion of VIN 1646732 + personal property | 3 years from conversion date |
+| **Common Law Fraud** | July 17, 2030 | Brown's res judicata insertion | 6 years (MCL 600.5813 catch-all) |
+
+### 🟢 LONGER HORIZON
+
+| Deadline | Date | Claim | SOL Basis |
+|----------|------|-------|-----------|
+| **Federal RICO (18 USC §1964)** | July 17, 2029 | RICO enterprise — Alden/HOA scheme | 4 years from discovery (*Agency Holding Corp v Malley-Duff*) |
+| **Michigan RICO (MCL 750.159i)** | July 17, 2035 | State RICO treble damages | 10 years |
+| **MCPA Deceptive Practices** | July 17, 2031 | MCL 445.903 — misrepresentation of HOA authority | 6 years |
+
+### SOL Action Items
+- **File HUD complaint NOW** — this is a hard administrative deadline that cannot be equitably tolled
+- **Serve litigation hold letters immediately** (see §46) — tolling argument depends on notice
+- **MCR 2.612 motion** has no 1-year bar for (c)/(d) grounds — but earlier = stronger
+
+---
+
+## §45 — FOIA Acquisition Targets
+
+**Five priority FOIA requests needed to complete the evidentiary record.**
+
+### 1. Muskegon County Sheriff's Office — Deputy Schmidt Report
+- **Request**: All police reports, dispatch logs, incident records for July 17, 2025, Lot 17, 1977 Whitehall Rd N, North Muskegon MI 49445
+- **Specific target**: Deputy Douglas Schmidt's July 17, 2025 report
+- **Authority**: MCL 15.231 et seq. (Michigan FOIA Act)
+- **Strategic value**: Documents who called police first; documents HOA's false report narrative
+- **File**: `05_FILINGS/LANE_B_FOIA_MCSO_JULY17.md` (generated — Phase 37)
+
+### 2. MCSO — HOA False Police Report
+- **Request**: All incident reports filed by Shady Oaks Park MHP LLC, HOA MI Retail Homes LLC, Partridge Equity Group, or any agent/employee against Andrew James Pigors, June–August 2025
+- **Strategic value**: Captures the false "Andrew smashed the locks" report for malicious prosecution claim
+
+### 3. 60th District Court — Ladas-Hoopes Eviction Docket
+- **Request**: Complete docket, all orders, all filings in the eviction proceeding before Hon. Maria Ladas-Hoopes
+- **Authority**: MCL 15.231 et seq.; court records are presumptively public
+- **Strategic value**: Establishes record for COA and §1983 due process claim; captures any ex parte communications
+
+### 4. 14th Circuit Court — Hoopes Emergency Motion Denial + Vacation Records
+- **Request**: All docket entries and orders in 2025-002760-CZ; Hoopes' recusal/vacation schedule for the date of the emergency motion denial
+- **Strategic value**: Documents Hoopes was on vacation when he denied the emergency motion; supports bias/prejudice under MCR 2.003
+
+### 5. LARA — License #1201891 Complaint History
+- **Request**: All complaints, inspection reports, violation notices, correspondence, and enforcement actions related to LARA Community License #1201891 (Shady Oaks Park MHP LLC)
+- **Authority**: MCL 15.231 et seq.; LARA records public unless specifically exempted
+- **Strategic value**: Documents MCL 125.2301 violations; shows LARA was on notice; supports negligent licensing claim
+
+### FOIA Follow-Up Protocol
+- Send certified mail + email simultaneously
+- Note 5-business-day response window under MCL 15.235
+- If denied: appeal within 180 days; prepare circuit court FOIA action
+- Log each request in deadlines table with 30-day follow-up flag
+
+---
+
+## §46 — Litigation Hold Letters
+
+**All HOA-affiliated entities must receive litigation hold letters immediately.** Failure to preserve constitutes spoliation (MCR 2.313(B)(2); *Brenner v Kolk*, 226 Mich App 149).
+
+### Recipients
+1. Shady Oaks Park MHP LLC (Attn: Bryon Fields, 77 Engle St, Englewood NJ 07631)
+2. Homes of America LLC (same address)
+3. HOA MI Retail Homes LLC (registered agent / Michigan address)
+4. Partridge Equity Group
+5. VRM Capital Corp
+6. Jeremy Brown P77427 (Brown Law Group or current firm)
+
+### Preservation Categories (Mandatory)
+
+| Category | Date Range | Why Critical |
+|----------|-----------|-------------|
+| **Security camera footage** | July 14–17, 2025 | Captures drilling event, "FREE" sign, Brown delivery, lock change |
+| **All emails re: Lot 17 / VIN 1646732 / Marlette 1970** | January 2023 – present | Documents coercion scheme and pre-litigation pressure |
+| **Communications re: "placing the home for sale"** | July 17, 2025 – present | Conversion of titled chattel post-eviction |
+| **Financial records — 3-ledger discrepancy** | 2022–2025 | Rent ledger fraud; basis for MCPA + fraud claims |
+| **Kim Davis lease documents** | All dates | Cricklewood MHP LLC signed lease = Shady Oaks had no valid lease |
+| **LARA license renewal communications** | 2022–present | Documents knowing operation under dissolved LLC |
+| **All communications between defendants and MCSO** | June–August 2025 | False police report coordination |
+| **Communications with Cassandra VanDam** | February 2026 | Slander of title to Carmyn Hanna |
+
+### Spoliation Threat
+If defendants destroy any of the above after receiving a litigation hold letter, Andrew is entitled to an adverse inference instruction at trial (M Civ JI 5.01) and potentially default judgment (*Brenner v Kolk*, 226 Mich App 149 (1997)).
+
+---
+
+## §47 — Impeachment Packages
+
+**Five witnesses ready for cross-examination. Each has a pre-loaded contradiction chain.**
+
+---
+
+### Witness 1: Cassandra VanDam (HOA Agent / Property Manager)
+
+**Perjury Trap**: February 18, 2026 Facebook Messenger statement to Carmyn Hanna:
+> "He abandoned the home."
+
+**Destruction sequence:**
+1. **COMMIT**: "You told Carmyn Hanna on February 18, 2026 that Andrew abandoned his home, correct?"
+2. **PIN**: "And you said this in a Facebook Messenger conversation?"
+3. **CONFRONT**: "You're aware Andrew holds a Michigan Secretary of State certificate of title to VIN 1646732, correct?"  *(Exhibit: SOS Title)*
+4. **CONFRONT**: "Under MCL 125.2308, a manufactured home may only be considered abandoned after a statutory abandonment proceeding. Can you identify any such proceeding that was ever filed?"
+5. **EXHIBIT**: "Let me show you Exhibit ___: Michigan LARA/SOS records showing no abandonment proceeding was ever initiated."
+
+**Result**: VanDam's "abandoned" statement is slander of title per MCL 565.108 and the Facebook message is Exhibit A for the claim.
+
+---
+
+### Witness 2: Jeremy Brown P77427 (Defense Counsel)
+
+**Core contradiction**: Order language inserted ≠ what court orally ruled.
+
+**Destruction sequence:**
+1. **COMMIT**: "You prepared the dismissal order in Case 2025-002760-CZ, correct?"
+2. **PIN**: "You included res judicata language in that order?"
+3. **CONFRONT**: "Can you point me to any portion of the court's oral ruling that mentioned res judicata?"  *(Exhibit: Transcript)*
+4. **CONFRONT**: "Shady Oaks Park MHP LLC is a different legal entity from Cricklewood MHP LLC, correct?" *(Exhibit: NJ registration records)*
+5. **CONFRONT**: "The prior case involved Cricklewood MHP LLC, not Shady Oaks Park MHP LLC — those are not the same parties?" *(Exhibit: Prior case caption)*
+6. **EXHIBIT**: Show NJ dissolution records for Shady Oaks. "If this entity was dissolved in 2022, how does it have standing to assert res judicata?"
+
+**Additional**: Brown alleged forgery and no charges were ever filed. Cross-examine on why an allegation was made in pleadings if it was never prosecuted.
+
+---
+
+### Witness 3: Nicole Browley (HOA Employee / Maintenance Coordinator)
+
+**Core contradiction**: Drill event July 14–15 vs. "routine maintenance" narrative.
+
+**Destruction sequence:**
+1. **COMMIT**: "You were present at Lot 17 on July 14 or July 15, 2025?"
+2. **PIN**: "You participated in or directed the drilling of locks on that date?"
+3. **CONFRONT**: "You had no court order authorizing entry on July 14 or 15, 2025, correct?"  *(Exhibit: Docket — no order on those dates)*
+4. **CONFRONT**: Show Mitchell Shafer text messages. "These texts show you communicated with Mitchell Shafer about the planned entry before it happened?"
+5. **EXHIBIT**: Security camera footage showing drill event.
+
+**Result**: Establishes trespass and conversion three days before the formal eviction date; destroys "routine maintenance" defense.
+
+---
+
+### Witness 4: Bryon Fields (Principal, Homes of America LLC / LARA Licensee)
+
+**Core accountability**: LARA License #1201891 is in his name. He is personally responsible.
+
+**Destruction sequence:**
+1. **COMMIT**: "You are listed as the principal contact for LARA Community License #1201891, correct?"
+2. **PIN**: "That license covers Shady Oaks Park, 1977 Whitehall Rd, North Muskegon?"
+3. **CONFRONT**: "Under MCL 125.2301, the licensee is responsible for all conditions at the mobile home community. You agree you are the licensee?"
+4. **CONFRONT**: "Were you aware that Shady Oaks Park MHP LLC was dissolved in New Jersey in 2022?" *(Exhibit: NJ dissolution records)*
+5. **CONFRONT**: Show LARA violation notices. "These violations were issued to the licensed community under your license. You received notice of each?"
+
+**Result**: Fields cannot claim ignorance of MCL 125.2301 violations when LARA notices were sent to the licensee address. Personal liability attaches.
+
+---
+
+### Witness 5: Kim Davis (Lease Signatory — Cricklewood MHP LLC)
+
+**Core admission**: Signed lease as Cricklewood MHP LLC — Shady Oaks MHP LLC never had a valid lease with Andrew.
+
+**Destruction sequence:**
+1. **COMMIT**: "You signed the lease agreement with Andrew Pigors on behalf of Cricklewood MHP LLC?"
+2. **PIN**: "The lease caption identifies the landlord as Cricklewood MHP LLC?"  *(Exhibit: Lease document)*
+3. **CONFRONT**: "Shady Oaks Park MHP LLC is not a signatory to that lease, correct?"
+4. **CONFRONT**: "Shady Oaks Park MHP LLC and Cricklewood MHP LLC are separate legal entities with separate NJ registrations, correct?" *(Exhibit: Registration records)*
+5. **EXHIBIT**: Show lease + NJ filings side by side. "So at no point did Andrew have a lease with Shady Oaks Park MHP LLC?"
+
+**Result**: Destroys landlord-tenant relationship between Andrew and Shady Oaks Park MHP LLC; undermines every eviction order; supports RICO enterprise claim (entity substitution as predicate act).
+
+---
+
+## §48 — Post-Eviction Tort Summary
+
+**8 discrete tort events following the July 17, 2025 eviction.**  
+Each is independently actionable. Together they support the conversion + IIED + RICO pattern.
+
+| # | Date | Event | Tort Theory | Evidence |
+|---|------|-------|-------------|----------|
+| 1 | July 14–15, 2025 | Drilling locks on VIN 1646732 THREE DAYS before formal eviction date | Trespass (MCL 600.2907) + Conversion of titled chattel | Security camera footage (Andrew's cameras); Nicole Browley presence; Mitchell Shafer texts |
+| 2 | July 17–18, 2025 | "FREE" sign placed on Andrew's personal belongings inside trailer | Abandonment of bailor's duty; Conversion (MCL 600.2919a) | Photos; witnesses; social media |
+| 3 | July 2025 | Henry Brandel removed stove, washer, and dryer from VIN 1646732 | Conversion of titled personal property (MCL 600.2919a) | Brandel admission; photos of empty home |
+| 4 | July 2025 | L.D.W.'s belongings deliberately smashed | Intentional infliction of emotional distress (IIED); Destruction of chattel | Photos; Andrew's testimony; L.D.W.'s items documented |
+| 5 | July 17, 2025 | New locks installed on VIN 1646732 by HOA agents | Unlawful exclusion from titled chattel; Conversion (SOS title holder has superior right of possession) | Lock photos; Andrew's inability to access; MCSO report |
+| 6 | July 17, 2025 | HOA filed false police report claiming Andrew smashed their locks | Malicious prosecution; Abuse of process (MCL 600.2907) | MCSO report; Andrew's own call to MCSO; photos of original drill damage |
+| 7 | February 18, 2026 | Cassandra VanDam tells Carmyn Hanna on Facebook Messenger: "he abandoned the home" | Slander of title (MCL 565.108); Tortious interference with prospective economic advantage | Facebook Messenger screenshot; SOS title (no abandonment proceeding) |
+| 8 | Ongoing (July 2025–present) | Defendants refuse to return VIN 1646732 to titled owner; placed home for sale | Conversion of titled manufactured home (chattel, not realty under MCL 125.2330) | SOS title certificate; LARA records; no transfer of title |
+
+### Aggregate Tort Exposure (Post-Eviction Only)
+
+| Tort | Conservative | Aggressive |
+|------|-------------|-----------|
+| Conversion (VIN 1646732 FMV) | $25,000 | $75,000 |
+| Conversion (personal property) | $15,000 | $40,000 |
+| IIED (L.D.W. belongings) | $20,000 | $100,000 |
+| Malicious prosecution | $25,000 | $75,000 |
+| Slander of title (3 blocked sales) | $50,000 | $200,000 |
+| Trespass (drill event) | $5,000 | $25,000 |
+| Unlawful exclusion | $30,000 | $100,000 |
+| **Post-Eviction Tort Subtotal** | **$170,000** | **$615,000** |
+| **RICO Trebled Maximum** | **$510,000** | **$1,845,000** |
+
+---
+
+*Encyclopedia last updated: §41–§48 added — THEMANBEARPIG integration, DB sync status, MCR 2.612 Brown fraud, SOL watchdog, FOIA targets, litigation hold letters, impeachment packages, post-eviction tort summary. Total sections: 48. 28 prayers for relief in brain DB + main DB.*  
 *Brain DB: `00_SYSTEM/brains/shadyoaks_brain.db` | Skill: `.agents/skills/SHADYOAKS-DESTRUCTION/SKILL.md` | Prayers: 28/28 complete*

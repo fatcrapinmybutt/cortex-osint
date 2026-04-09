@@ -1668,6 +1668,81 @@ class UnifiedAPI:
 
         return data
 
+
+    def get_lane_b_prayers(self):
+        """Lane B (Shady Oaks) prayers for relief + damages aggregate.
+
+        Queries litigation_context.db for lane_b_prayers_for_relief and
+        lane_b_damages_aggregate tables populated by SHADYOAKS-DESTRUCTION.
+
+        Returns:
+            dict with prayers (list), damages_aggregate (list), summary dict.
+        """
+        lit = self._lit()
+        result = {
+            "prayers": [],
+            "damages_aggregate": [],
+            "summary": {
+                "total_prayers": 0,
+                "max_damages_low": 0.0,
+                "max_damages_high": 0.0,
+                "prayer_tiers": {}
+            }
+        }
+        if lit is None:
+            result["error"] = "Litigation DB not available"
+            return result
+
+        try:
+            # Prayers for relief
+            rows = lit.execute(
+                "SELECT id, count_number, claim_name, statutory_authority, "
+                "case_law, relief_type, damages_formula, low_estimate, "
+                "high_estimate, multiplier, mandatory_fees, sol_years, "
+                "sol_anchor_date, sol_expires, tier, lane, notes, status "
+                "FROM lane_b_prayers_for_relief ORDER BY id"
+            ).fetchall()
+            prayers = []
+            tier_map = {}
+            for r in rows:
+                d = dict(r)
+                d["low_estimate"] = _safe_float(d.get("low_estimate"))
+                d["high_estimate"] = _safe_float(d.get("high_estimate"))
+                d["multiplier"] = _safe_float(d.get("multiplier"))
+                prayers.append(d)
+                tier = d.get("tier", "unknown")
+                tier_map[tier] = tier_map.get(tier, 0) + 1
+            result["prayers"] = prayers
+            result["summary"]["total_prayers"] = len(prayers)
+            result["summary"]["prayer_tiers"] = tier_map
+        except Exception as exc:
+            result["prayers_error"] = str(exc)
+
+        try:
+            # Damages aggregate
+            agg_rows = lit.execute(
+                "SELECT scenario, total_low, total_high, notes, created_at "
+                "FROM lane_b_damages_aggregate ORDER BY total_high DESC"
+            ).fetchall()
+            agg = []
+            for r in agg_rows:
+                d = dict(r)
+                d["total_low"] = _safe_float(d.get("total_low"))
+                d["total_high"] = _safe_float(d.get("total_high"))
+                agg.append(d)
+            result["damages_aggregate"] = agg
+            if agg:
+                result["summary"]["max_damages_low"] = max(
+                    a["total_low"] for a in agg if a["total_low"]
+                )
+                result["summary"]["max_damages_high"] = max(
+                    a["total_high"] for a in agg if a["total_high"]
+                )
+        except Exception as exc:
+            result["damages_error"] = str(exc)
+
+        return result
+
     def export_subgraph(self, node_ids):
         """Export a subgraph as D3.js-compatible JSON.
 
