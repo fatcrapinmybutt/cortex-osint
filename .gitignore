@@ -1,0 +1,5 @@
+
+# ML model artifacts - generated, do not track
+*.pkl
+*.pickle
+00_SYSTEM/engines/predictive/models/
