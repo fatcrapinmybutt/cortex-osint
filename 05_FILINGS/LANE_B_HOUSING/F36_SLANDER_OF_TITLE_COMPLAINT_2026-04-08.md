@@ -12,15 +12,16 @@ CASSANDRA VANDAM, individually and as agent,
     Defendants.
 _____________________________________________/
 
-COMPLAINT FOR SLANDER OF TITLE, TORTIOUS INTERFERENCE,
-AND DECLARATORY JUDGMENT
+COMPLAINT FOR SLANDER OF TITLE, DEFAMATION PER SE, WRONGFUL EVICTION,
+TORTIOUS INTERFERENCE, AND DECLARATORY JUDGMENT
 
 Plaintiff Andrew James Pigors, appearing pro se, alleges as follows:
 
                                          PARTIES
 
-1. Plaintiff Andrew James Pigors resides at 1977 Whitehall Rd, Lot 17, North Muskegon, MI 49445,
-   and at all relevant times held title to the mobile home situated at that address.
+1. Plaintiff Andrew James Pigors resides at 306 W. Southern Ave, Muskegon, MI 49441.
+   At all relevant times, Plaintiff held title to the mobile home situated at Lot 17,
+   1977 Whitehall Rd (Shady Oaks Mobile Home Community), North Muskegon, MI 49445.
 
 2. Defendant Homes of America LLC is a Michigan limited liability company operating mobile home
    parks in Michigan, including Shady Oaks Mobile Home Community (formerly "Shady Oaks Park MHP").
@@ -29,7 +30,7 @@ Plaintiff Andrew James Pigors, appearing pro se, alleges as follows:
    that operated as the predecessor management entity for the park. LARA License #1201891 was
    held by Bryon Fields on behalf of associated entities.
 
-4. Defendant Cassandra VanDam is employed as a property manager or similar role at Shady Oaks
+4. Defendant Cassandra VanDam (née Sprague-VanDam) is employed as a property manager or similar role at Shady Oaks
    Mobile Home Community, acting as agent of Homes of America LLC.
 
                                     JURISDICTION AND VENUE
@@ -89,35 +90,77 @@ Plaintiff Andrew James Pigors, appearing pro se, alleges as follows:
 
 17. Plaintiff is entitled to actual damages, punitive damages, and attorney equivalency fees.
 
-                              COUNT II — TORTIOUS INTERFERENCE WITH
-                            PROSPECTIVE ECONOMIC ADVANTAGE
+                             COUNT II — DEFAMATION PER SE
+                      MCL 600.2911; Restatement (Second) of Torts § 558
 
 18. Plaintiff realleges paragraphs 1–12.
 
-19. Plaintiff had a prospective business relationship with Carmyn Hanna regarding the sale of his
-    mobile home.
+19. Defendant VanDam, acting within the scope of her agency for Defendants Homes of America LLC
+    and Shady Oaks Park MHP LLC, published to Carmyn Hanna via Facebook Messenger the false
+    statements set forth in paragraph 8 above.
 
-20. Defendants knew of this prospective relationship (Hanna had made inquiry to HOA about
-    purchasing the home).
+20. The statement "Andrew Pigors does not own a home at Shady Oaks MHC" falsely imputes to
+    Plaintiff the commission of a criminal act and constitutes defamation per se under Michigan
+    law, requiring no proof of special damages.
 
-21. Defendants intentionally interfered with that relationship through the false statements
-    described above, and through the claim that HOA would place the home "up for sale" — which
-    would only be possible if Plaintiff's title were extinguished.
+21. Defendants are vicariously liable for VanDam's publication as her principal employer
+    and the party whose interests she was advancing in making the statement.
 
-22. The interference was improper and caused Plaintiff loss of a contemplated transaction.
+22. As a direct and proximate result, Plaintiff suffered reputational harm, loss of a prospective
+    transaction, and emotional distress. Plaintiff is entitled to general, special, and punitive
+    damages.
 
-                        COUNT III — DECLARATORY JUDGMENT — TITLE
-                                    MCL 600.1601
+                      COUNT III — WRONGFUL EVICTION AND UNLAWFUL
+                           INTERFERENCE WITH PROPERTY RIGHTS
+                                   MCL 600.2918
 
 23. Plaintiff realleges paragraphs 1–12.
 
-24. An actual controversy exists between Plaintiff and Defendants regarding ownership of the
-    mobile home at Lot 17.
+24. Defendants, acting through their agents including Nicole Browley, entered and seized
+    Plaintiff's mobile home at Lot 17 pursuant to a writ of eviction obtained in the name of
+    Shady Oaks Park MHP LLC — a New Jersey limited liability company dissolved in 2022, which
+    lacked legal existence and legal authority to obtain any writ of eviction.
 
-25. Defendants have publicly, repeatedly, and falsely stated that Plaintiff does not own the
+25. Because the entity in whose name the writ was obtained was legally dissolved (MCL 450.4802),
+    the writ was void ab initio and the eviction was unlawful. Plaintiff was entitled to remain
+    in possession of his titled manufactured home.
+
+26. Defendants forcibly removed Plaintiff from his titled property, destroyed personal belongings
+    including those of the minor child L.D.W., installed new locks, and converted Plaintiff's
+    home and personal property — all without lawful authority.
+
+27. Plaintiff is entitled to actual damages, statutory damages under MCL 600.2918, and such
+    additional relief as the Court deems proper.
+
+                              COUNT IV — TORTIOUS INTERFERENCE WITH
+                            PROSPECTIVE ECONOMIC ADVANTAGE
+
+28. Plaintiff realleges paragraphs 1–12.
+
+29. Plaintiff had a prospective business relationship with Carmyn Hanna regarding the sale of his
     mobile home.
 
-26. Plaintiff is entitled to a declaratory judgment confirming his title to the mobile home,
+30. Defendants knew of this prospective relationship (Hanna had made inquiry to HOA about
+    purchasing the home).
+
+31. Defendants intentionally interfered with that relationship through the false statements
+    described above, and through the claim that HOA would place the home "up for sale" — which
+    would only be possible if Plaintiff's title were extinguished.
+
+32. The interference was improper and caused Plaintiff loss of a contemplated transaction.
+
+                         COUNT V — DECLARATORY JUDGMENT — TITLE
+                                    MCL 600.1601
+
+33. Plaintiff realleges paragraphs 1–12.
+
+34. An actual controversy exists between Plaintiff and Defendants regarding ownership of the
+    mobile home at Lot 17.
+
+35. Defendants have publicly, repeatedly, and falsely stated that Plaintiff does not own the
+    mobile home.
+
+36. Plaintiff is entitled to a declaratory judgment confirming his title to the mobile home,
     which has not been extinguished by any lawful adjudication.
 
                                     RELIEF REQUESTED
@@ -125,18 +168,21 @@ Plaintiff Andrew James Pigors, appearing pro se, alleges as follows:
 WHEREFORE, Plaintiff requests:
 
 A. Compensatory damages for loss of the Carmyn Hanna prospective sale (trailer FMV: $18,000–$25,000);
-B. Punitive damages for malicious slander of title;
-C. Declaratory judgment that Plaintiff is and has been the titled owner of the mobile home at Lot 17;
-D. Injunctive relief prohibiting Defendants from making further false statements about Plaintiff's title;
-E. Costs and attorney equivalency fees under MCL 600.2591;
-F. Such other relief as is just.
+B. Punitive damages for malicious slander of title (COUNT I);
+C. General, special, and punitive damages for defamation per se (COUNT II);
+D. Actual and statutory damages for wrongful eviction and conversion (COUNT III), including
+   enhanced damages as permitted by MCL 600.2918;
+E. Declaratory judgment that Plaintiff is and has been the titled owner of the mobile home at Lot 17 (COUNT V);
+F. Injunctive relief prohibiting Defendants from making further false statements about Plaintiff's title;
+G. Costs and attorney equivalency fees under MCL 600.2591;
+H. Such other relief as is just.
 
                                                 Respectfully submitted,
 
                                                 /s/ Andrew James Pigors
                                                 Andrew James Pigors, Plaintiff, Pro Se
-                                                1977 Whitehall Rd, Lot 17
-                                                North Muskegon, MI 49445
+                                                306 W. Southern Ave
+                                                Muskegon, MI 49441
                                                 (231) 903-5690
                                                 andrewjpigors@gmail.com
 Date: April 08, 2026

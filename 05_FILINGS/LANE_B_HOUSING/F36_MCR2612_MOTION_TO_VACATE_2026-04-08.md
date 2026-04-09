@@ -26,7 +26,8 @@ supporting it. This is fraud on the court under MRPC 3.3(a)(1) and requires vaca
 
                                     II. STATEMENT OF FACTS
 
-1. On [HEARING DATE — obtain from transcript], this Court held a hearing in Case No. 2025-002760-CZ.
+1. On August 22, 2025, this Court held a hearing in Case No. 2025-002760-CZ and entered
+   the Order of Dismissal.
 
 2. At no point during that hearing did this Court make an oral ruling that Plaintiff's claims were
    barred by res judicata. [TO BE CONFIRMED BY TRANSCRIPT — SEE ACQUISITION RADAR, ITEM 10]
@@ -63,6 +64,15 @@ supporting it. This is fraud on the court under MRPC 3.3(a)(1) and requires vaca
 
 12. In re Contempt of Dudzinski, 257 Mich App 96 (2003): Michigan courts scrutinize proposed
     orders that exceed the scope of oral rulings.
+
+13. Triplett v. St. Amour, 444 Mich 170 (1993): Counsel's representations made in open court
+    are binding, and a written order must accurately reflect the court's actual bench ruling.
+    An order that varies from or expands the oral ruling is invalid as to the excess language.
+
+14. International Outdoor, Inc v SS Mitx, LLC, Mich App (2023): An attorney submitting a
+    proposed order that misrepresents the court's oral ruling violates MRPC 3.3(a)(1) and
+    MCR 2.119(G)(3). The court's spoken ruling — not counsel's written characterization —
+    defines the scope of the judgment entered.
 
                                      IV. ARGUMENT
 
@@ -111,8 +121,8 @@ WHEREFORE, Plaintiff respectfully requests that this Court:
 
                                                 /s/ Andrew James Pigors
                                                 Andrew James Pigors, Plaintiff, Pro Se
-                                                1977 Whitehall Rd, Lot 17
-                                                North Muskegon, MI 49445
+                                                306 W. Southern Ave
+                                                Muskegon, MI 49441
                                                 (231) 903-5690
                                                 andrewjpigors@gmail.com
 Date: April 08, 2026
