@@ -54,6 +54,7 @@ HAS_EVIDENCE_BRIDGE = False
 HAS_FILING_ASSEMBLY = False
 HAS_BRAIN_SYNC = False
 HAS_TELEMETRY = False
+HAS_PATCH_MANAGER = False
 
 try:
     from mbp_engines.athena import Athena
@@ -154,6 +155,11 @@ except Exception:
 try:
     from engines.telemetry.engine import TelemetryEngine
     HAS_TELEMETRY = True
+except Exception:
+    pass
+try:
+    from engines.patch_manager.manager import PatchManager
+    HAS_PATCH_MANAGER = True
 except Exception:
     pass
 
@@ -606,6 +612,7 @@ class UnifiedAPI:
         self._filing_assembly = None
         self._brain_sync = None
         self._telemetry = None
+        self._patch_manager = None
 
     # -- Connection helpers --
 
@@ -774,6 +781,14 @@ class UnifiedAPI:
             except Exception:
                 pass
         return self._telemetry
+
+    def _get_patch_manager(self):
+        if self._patch_manager is None and HAS_PATCH_MANAGER:
+            try:
+                self._patch_manager = PatchManager()
+            except Exception:
+                pass
+        return self._patch_manager
 
     # ===================================================================
     # BRAIN API (from mbp_app.py BrainAPI)
@@ -4770,7 +4785,7 @@ def main():
             return {"error": str(e), "available": True}
 
     def get_singularity_status(self):
-        """Master status of all 9 SINGULARITY v22 engines."""
+        """Master status of all 10 SINGULARITY v22 engines."""
         engines = {
             "event_bus": HAS_EVENT_BUS,
             "genetic_memory": HAS_GENETIC_MEMORY,
@@ -4781,6 +4796,7 @@ def main():
             "filing_assembly": HAS_FILING_ASSEMBLY,
             "brain_sync": HAS_BRAIN_SYNC,
             "telemetry": HAS_TELEMETRY,
+            "patch_manager": HAS_PATCH_MANAGER,
         }
         loaded = sum(1 for v in engines.values() if v)
         return {
@@ -4790,6 +4806,44 @@ def main():
             "total": len(engines),
             "status": "FULLY OPERATIONAL" if loaded == len(engines) else f"{loaded}/{len(engines)} loaded",
         }
+
+    def apply_patches(self):
+        """Apply all pending patches from patches/ directory to mbp_brain.db."""
+        pm = self._get_patch_manager()
+        if pm is None:
+            return {"error": "PatchManager not available"}
+        try:
+            conn = self._brain()
+            if conn is None:
+                return {"error": "Brain DB not available"}
+            nodes = [dict(r) for r in conn.execute("SELECT * FROM nodes").fetchall()]
+            links = [dict(r) for r in conn.execute("SELECT * FROM links").fetchall()]
+            graph_data = {"nodes": nodes, "links": links}
+            result = pm.apply_all_pending(graph_data)
+            return result
+        except Exception as e:
+            return {"error": str(e)}
+
+    def get_patch_status(self):
+        """Return applied patches, pending count, and version info."""
+        pm = self._get_patch_manager()
+        if pm is None:
+            return {"error": "PatchManager not available"}
+        try:
+            return pm.get_status()
+        except Exception as e:
+            return {"error": str(e)}
+
+    def create_patch_from_db(self, patch_type="adversary"):
+        """Generate a patch file from current DB state."""
+        pm = self._get_patch_manager()
+        if pm is None:
+            return {"error": "PatchManager not available"}
+        try:
+            path = pm.generate_patch_from_db(patch_type)
+            return {"created": str(path)}
+        except Exception as e:
+            return {"error": str(e)}
 
 
 if __name__ == "__main__":
