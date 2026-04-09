@@ -1829,6 +1829,143 @@ Each is independently actionable. Together they support the conversion + IIED + 
 *Encyclopedia last updated: §41–§48 added — THEMANBEARPIG integration, DB sync status, MCR 2.612 Brown fraud, SOL watchdog, FOIA targets, litigation hold letters, impeachment packages, post-eviction tort summary. Total sections: 48. 28 prayers for relief in brain DB + main DB.*  
 *Brain DB: `00_SYSTEM/brains/shadyoaks_brain.db` | Skill: `.agents/skills/SHADYOAKS-DESTRUCTION/SKILL.md` | Prayers: 28/28 complete*
 
+---
+
+## §49 — COMPLETE ENTITY REGISTRY (All 8+ LLCs — Jurisdictions + Status)
+
+| Entity | Jurisdiction | Reg Number | Status | Notes |
+|--------|-------------|-----------|--------|-------|
+| Shady Oaks Park MHP LLC | **Michigan** | — | **DISSOLVED May 22, 2022** | Used in 2025 proceedings — void standing |
+| Shady Oaks Park MHP LLC | **New Jersey** | — | Active | 77 Engle St, Englewood NJ 07631 — Aaron Cox represented this entity |
+| Shady Oaks Park MHP LLC | **Colorado** | — | Active | PO Box 1908, Crested Butte CO 81224 — third jurisdiction |
+| Homes of America | National aggregator | — | Active | Portfolio aggregator under Alden |
+| HOA MI Retail Homes LLC | Michigan | — | Active | Sued own subsidiaries Feb 4, 2025 to transfer 7 mobile home titles; owns retail inventory |
+| VRM Capital Corp | Unknown | — | Active | Financial arm obscuring beneficial ownership; between Alden and Homes of America |
+| North Morris Estates LLC | Michigan | — | Active | Yousef "Joe" Khalil — guilty plea, $25K fine = RICO predicate act |
+| Alden Global Capital | New York | — | Active | $275M MHP portfolio, 138 parks, 17 states — ultimate beneficial owner |
+| CT Corp System | Michigan (registered agent) | — | Active | Refused to accept service ("no one by that name") — Shady Oaks had no registered agent |
+
+**Critical LARA Facts:**
+- License #1201891 — Byron Fields listed as principal
+- Dissolution date: May 22, 2022 — entity was legally DEAD when it filed eviction
+- MCL 450.4802(2): A dissolved LLC may not maintain suit as plaintiff (only wind down)
+- Court proceedings by dissolved entity = void ab initio — jurisdictional defect
+
+**Aaron Cox P69346 — Dual Representation Timeline:**
+1. Cox appeared as counsel for MI entity (Shady Oaks Park MHP LLC — MI, DISSOLVED)
+2. Cox also represented NJ entity simultaneously (active, different legal person)
+3. Filed pleadings without disclosing dual representation
+4. MRPC 1.7: Conflict of interest — concurrent clients with adverse interests
+5. MRPC 1.9: Duty to former client — MI entity is "former" once dissolved
+6. MCR 2.003(C)(2): Attorney misconduct grounds for new trial
+7. **AGC Grievance Target**: State Bar of Michigan, P.O. Box 30062, Lansing MI 48909
+
+---
+
+## §50 — AARON COX P69346 DUAL-REPRESENTATION FRAUD
+
+### Conduct Summary
+Cox appeared as counsel of record for "Shady Oaks Park MHP LLC" in 2025-002760-CZ — a Michigan entity **dissolved May 22, 2022**. Simultaneously, Cox represented the New Jersey entity of the same name (active, 77 Engle St, Englewood NJ 07631), which is a legally distinct person.
+
+### Rule Violations
+| Rule | Violation |
+|------|----------|
+| **MRPC 1.7(a)** | Concurrent representation of entities with conflicting interests |
+| **MRPC 1.9(a)** | Duties to former clients — MI entity dissolved = prior client |
+| **MRPC 3.3(a)(1)** | False statement to tribunal — presenting dissolved entity as having standing |
+| **MRPC 3.5(c)** | Conduct prejudicial to administration of justice |
+| **MCL 450.4802** | A dissolved LLC cannot maintain a lawsuit as plaintiff |
+| **MCR 2.114** | Signing of pleadings — must have investigated standing |
+
+### AGC Grievance Roadmap
+1. File written complaint with Attorney Grievance Commission
+2. Address: 535 Griswold St, Suite 1700, Detroit MI 48226 (or 755 W. Big Beaver, Suite 2100, Troy MI 48084)
+3. Include: Case 2025-002760-CZ docket, LARA dissolution record, Cox's filings, NJ entity registration
+4. Request: Investigation + MCR 2.003(C)(2) grounds for new trial
+5. Cross-file: State Bar Grievance Board complaint P69346
+
+### Strategic Value
+- Cox's misconduct + dissolved-entity standing = **independent grounds for void judgment** under MCR 2.612(C)(1)(d): "The judgment is void"
+- A void judgment has no SOL — can be attacked at any time
+- Combined with Brown's res judicata fraud → dual grounds for MCR 2.612 relief
+
+---
+
+## §51 — RANKED LEGAL THEORIES (15 Theories — Strength + SOL)
+
+| Rank | Theory | Statute/Authority | Strength | SOL | Status |
+|------|--------|------------------|---------|-----|--------|
+| 1 | **Wrongful Eviction / Anti-Lockout** | MCL 600.2918 | ⭐⭐⭐⭐⭐ | **Jul 17, 2026** 🔴 | DRAFT |
+| 2 | **Void Judgment — Dissolved Entity** | MCL 450.4802(2) + MCR 2.612(C)(1)(d) | ⭐⭐⭐⭐⭐ | None (void = no SOL) | DRAFT |
+| 3 | **Fraud on the Court — Brown** | MCR 2.612(C)(1)(c) | ⭐⭐⭐⭐⭐ | ~Aug 22, 2026 | DRAFT |
+| 4 | **Civil RICO** | 18 USC §1964(c) | ⭐⭐⭐⭐ | 4 years from discovery | RESEARCH |
+| 5 | **Slander of Title** | MCL 565.108 + MCL 600.2911 | ⭐⭐⭐⭐ | 3 years from each act | DRAFT |
+| 6 | **Conversion** | MCL 600.2919a | ⭐⭐⭐⭐ | 2 years from each act | DRAFT |
+| 7 | **42 USC §1983 — Judicial Cartel** | 14th Amendment | ⭐⭐⭐⭐ | 3 years | RESEARCH |
+| 8 | **Malicious Prosecution** | MCL 600.2907 + Paluska v Collins | ⭐⭐⭐ | 2 years from final termination | RESEARCH |
+| 9 | **Abuse of Process** | MCL 600.2907 | ⭐⭐⭐ | 2 years from last process act | RESEARCH |
+| 10 | **IIED** | Hayley v Allstate (Mich) | ⭐⭐⭐ | 2 years | RESEARCH |
+| 11 | **EGLE / Environmental Violations** | MCL 324.11701 (sewage) | ⭐⭐⭐ | No civil SOL (state enforcement) | EVIDENCE |
+| 12 | **AGC Grievance — Cox** | MRPC 1.7/1.9/3.3 | ⭐⭐⭐ | No SOL (disciplinary) | ROADMAP |
+| 13 | **JTC Complaint — Ladas-Hoopes** | MCR 9.104 / JTC | ⭐⭐⭐⭐ | No SOL | ROADMAP |
+| 14 | **JTC Complaint — Hoopes** | MCR 9.104 / JTC | ⭐⭐⭐ | No SOL | ROADMAP |
+| 15 | **COA Appeal of Dismissal** | MCR 7.204/7.205 | ⭐⭐⭐ | 21 days from entry (verify) | VERIFY DATE |
+
+**Priority Filing Sequence:** #1 → #2/#3 (file together) → #4/#5/#6 (new complaint) → #7 (federal) → #13/#14 (JTC)
+
+---
+
+## §52 — COA EMERGENCY APPLICATION CHECKLIST + PROCEDURE
+
+### Step 1 — Verify Dismissal Order Entry Date
+```sql
+SELECT event_date, description FROM timeline_events
+WHERE lane='B' AND description LIKE '%dismiss%'
+ORDER BY event_date DESC LIMIT 10;
+```
+The 21-day emergency application window (MCR 7.205(F)) runs from the **date of entry** of the dismissal order, not the hearing date.
+
+### Step 2 — Determine Correct Vehicle
+| If Within 21 Days of Entry | If Beyond 21 Days |
+|---------------------------|------------------|
+| MCR 7.205(F) Emergency Application | MCR 7.205(E) Late Appeal (show cause) |
+| File simultaneously in COA | MCR 2.612(C) in trial court (Brown fraud) |
+| Seek emergency stay of proceedings | Both vehicles available simultaneously |
+
+### Step 3 — COA Application for Leave Contents (MCR 7.205(A))
+- [ ] Application for Leave to Appeal (COA 1 form)
+- [ ] Brief in support (≤50 pages, MCR 7.212)
+- [ ] Appendix (dismissal order, docket, key pleadings)
+- [ ] Proof of service on all parties
+- [ ] Filing fee ($375) or MC 20 fee waiver
+- [ ] Jurisdictional statement (MCR 7.203)
+- [ ] Issues presented
+- [ ] Emergency designation if applicable
+
+### Step 4 — Grounds for COA Appeal (Lane B)
+1. **Void judgment** — dissolved entity (MCL 450.4802) had no standing → court lacked jurisdiction over real-party-in-interest
+2. **Brown's res judicata fraud** — dismissal order contains res judicata language not orally stated → MCR 2.612(C)(1)(c)
+3. **Denied due process** — emergency order denied by Hoopes (husband of presiding judge) → MCR 2.003 disqualification grounds
+4. **No valid eviction** — MCL 600.2918 anti-lockout, security camera evidence, coercion email pattern
+5. **Judicial cartel** — Ladas-Hoopes + Hoopes = former partners → MCR 2.003(C)(1) + Const 1963 art 6, §20
+
+### Step 5 — MSC Original Action (if COA Refused)
+- If COA denies application → MCR 7.306 Superintending Control (MSC)
+- Grounds: Both lower courts presided over by former partners at same firm
+- No adequate remedy in ordinary course — entire 14th Circuit compromised
+- MSC can appoint visiting judge for remand (MCR 2.003(C)(2))
+
+### Emergency Stay Procedure
+- File motion for emergency stay under MCR 7.209(E) simultaneously with application
+- Cite: Security camera evidence + coercion emails establish prima facie case
+- Real risk of continued exclusion from property + irreparable harm to title
+- No adequate remedy at law until appeal resolved
+
+---
+
+*Encyclopedia last updated: §49–§52 added — Entity registry (8+ LLCs), Aaron Cox P69346 dual-rep fraud, 15-theory ranked table with SOL, COA procedure checklist + MSC escalation. Total sections: 52.*  
+*Brain DB: `00_SYSTEM/brains/shadyoaks_brain.db` | Skill: `.agents/skills/SHADYOAKS-DESTRUCTION/SKILL.md` | 28 prayers/28 complete*
+
 
 ---
 
