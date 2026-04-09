@@ -3,3 +3,11 @@
 *.pkl
 *.pickle
 00_SYSTEM/engines/predictive/models/
+
+# Brain DBs — too large for GitHub (>100 MB), stored locally on C:\
+00_SYSTEM/brains/*.db
+# litigation_context.db tracked separately
+litigation_context.db
+litigation_context.db-shm
+litigation_context.db-wal
+mbp_brain.db
