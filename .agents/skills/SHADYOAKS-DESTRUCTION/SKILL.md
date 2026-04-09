@@ -1,6 +1,6 @@
 ---
 name: SHADYOAKS-DESTRUCTION
-version: "1.0.0"
+version: "2.0.0"
 description: "MAX-TIER adversary-scoped skill: TOTAL DESTRUCTION of the Shady Oaks / Homes of America / Alden Global Capital / Partridge Securities / Cricklewood MHP housing cartel. Scope-locked to Lane B (2025-002760-CZ) and all associated housing case entities and individuals. When this skill is active: NO other adversary, case, lane, or claim exists. ONLY the housing cartel, ONLY its destruction. Trigger keywords: Shady Oaks, Homes of America, Alden, Partridge, Cricklewood, Kim Davis, Nicole Browley, Cassandra VanDam, Shelly Przybalek, Henry Brandell, Jeremy Brown, Aaron Cox, Joseph Khalil, eviction, water shutoff, dissolved LLC, ultra vires, title theft, EGLE, VN-017235, Lane B, 2025-002760-CZ."
 ---
 
@@ -12,6 +12,7 @@ description: "MAX-TIER adversary-scoped skill: TOTAL DESTRUCTION of the Shady Oa
 > **SCOPE LOCK:** While this skill is active, ONE adversary network exists. One case. One mission.
 > **Case:** 2025-002760-CZ (14th Circuit) · 2025-25061626LT-LT (eviction, VOID) · EGLE VN-017235
 > **Author:** LitigationOS SINGULARITY v7.0 · ADVERSARY-TIER
+> **Evidence Corpus:** 3,673 files ingested · 8,912 quotes · 42,796 entities · 13,754 Lane B quotes in main DB
 
 ---
 

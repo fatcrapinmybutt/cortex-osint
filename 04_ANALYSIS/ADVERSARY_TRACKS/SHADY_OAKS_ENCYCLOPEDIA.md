@@ -1828,3 +1828,83 @@ Each is independently actionable. Together they support the conversion + IIED + 
 
 *Encyclopedia last updated: §41–§48 added — THEMANBEARPIG integration, DB sync status, MCR 2.612 Brown fraud, SOL watchdog, FOIA targets, litigation hold letters, impeachment packages, post-eviction tort summary. Total sections: 48. 28 prayers for relief in brain DB + main DB.*  
 *Brain DB: `00_SYSTEM/brains/shadyoaks_brain.db` | Skill: `.agents/skills/SHADYOAKS-DESTRUCTION/SKILL.md` | Prayers: 28/28 complete*
+
+
+---
+
+## §49 — DEEP INGESTION COMPLETE: FINAL EVIDENCE CORPUS STATISTICS
+
+**Date completed**: 2026-04-09  
+**Engine**: shadyoaks_deep_ingest.py (5 waves)  
+**Input list**: D:\LitigationOS_tmp\shadyoaks_evidence_only.txt (3,673 paths)  
+
+### Brain DB Final Counts (verified via PRAGMA table_info + SELECT COUNT(*))
+
+| Table | Count |
+|-------|-------|
+| ile_extracts | 2,671 |
+| vidence_atoms | 2,136 |
+| key_quotes | 8,912 |
+| document_entities | 42,796 |
+| ingest_progress | 3,673 |
+
+### Main DB Lane B Counts (litigation_context.db)
+
+| Table | Lane B Rows |
+|-------|-------------|
+| vidence_quotes | 13,754 |
+| contradiction_map | 631 |
+
+### Top Confirmed Statutes (by frequency in evidence corpus)
+
+| Statute | Count | Significance |
+|---------|-------|-------------|
+| MCL 600.2918 | 573 | Trespass to land — drilling locks, unlawful entry |
+| MCL 554.139 | 462 | Landlord habitability duty (sewage EGLE violation) |
+| MCL 600.2919a | 397 | Conversion of personal property (stove, washer, dryer) |
+| MCL 600.5720 | 232 | Summary proceedings — eviction void for standing |
+| MCR 4.201 | 234 | Summary eviction procedure (process defects) |
+
+### Top EGLE / Eviction / Abandonment Trigger Quote Counts
+
+| Trigger | Quote Count | Key Issue |
+|---------|-------------|-----------|
+| EGLE | 531 (514+17) | VN-017235 sewage violation — habitability defense |
+| evict (all case variants) | 658+ | Entity fraud (Homes of America vs. Shady Oaks MHP LLC) |
+| res judicata | 20 | Brown's fraudulent res judicata claim in dismissal order |
+| abandon | 43 | VanDam "abandoned" slander of title claim |
+| sewage | 186 | EGLE VN-017235 retaliatory eviction nexus |
+
+### Key Verbatim Quotes (Score 8/8 — Highest Impeachment Value)
+
+**Nicole Browley Admission (July 14, 2025):**
+> "Nicole Browley stated to the officer, during the eviction on July 14th 2025, that she represented HOMES OF AMERICA."
+> "They never disclosed, nor documented anywhere in any court filings, that Homes Of America was the entity that had interest/control of the eviction/removal of my property."
+
+**Entity Fraud Confirmation:**
+> "You now have critical evidence of a fraudulent eviction enterprise—a textbook shell game that links: ✅ Dissolved Entity (Shady Oaks MHP LLC) ✅ Active Evictor (Shady Oaks Park MHP LLC) ✅ Parent Cor[porate controller]"
+
+**Judge Ladas-Hoopes Liability:**
+> "Judge Maria Ladas Hoopes instructed the court officer, to carry out the eviction of my personal possessions, despite my numerous filings in both 14th and 60th courts."
+> "Judge Maria Ladas Hoopes, by instructing the court officer to evict and dispose of your personal possessions, exceeded the scope [of any valid eviction order]."
+
+**EGLE Retaliation:**
+> "Retaliated against after reporting to: EGLE (sewage) / HUD (habitability)"
+
+### Files With Highest Adversary Hit Density
+
+1. SHADY OAKScombined_chat_transcripts (5).pdf — 278,765 words, score 8 throughout
+2. Shady Oaks Litigation Core (1).pdf + (2).pdf — Complete verified entity structure
+3. Shady_Oaks_Response_VN017235.pdf — EGLE VN-017235 violation response (Apr 28, 2025)
+4. SHADY_OAKS_TIMELINE.md / SECTION_1.md — 123K words timeline corpus
+5. MEEK1_ShadyOaks_Facts.csv + Timeline.csv — 34,567 row structured data
+
+### Synthesis Scripts (permanent, D:\LitigationOS_tmp\)
+
+| Script | Purpose | Status |
+|--------|---------|--------|
+| shadyoaks_deep_ingest.py | Master 5-wave ingestion engine | COMPLETE |
+| sync_quotes_to_main.py | Quote sync to litigation_context.db | COMPLETE (1,000 synced) |
+| shadyoaks_synthesis.py | Post-ingestion FTS5 rebuild + reports | COMPLETE |
+
+*§49 added 2026-04-09. Deep ingestion complete. 3,673 files analyzed. 8,912 quotes extracted. 42,796 entities. 13,754 Lane B quotes in main DB.*
