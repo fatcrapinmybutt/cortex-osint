@@ -1582,9 +1582,132 @@ P3 (90 DAYS):
 
 ---
 
-## END SHADYOAKS-DESTRUCTION SKILL SYSTEM (20 LAYERS)
+---
 
-*Architecture: L0 Corporate Identity → L1 Individual Profiles (8 persons) → L2 23 Causes of Action → L3 Evidence Database → L4 Timeline → L5 EGLE → L6 Filing Stack → L7 Authorities → L8 Damages ($668K–$2.706M base) → L9 Service Targets → L10 SOL → L11 Cascade → L12 Scope Lock → L13 Slander of Title/Screenshot → L14 Judicial Cartel/Hoopes → L15 MCR 2.612 Vacate → L16 Ongoing Conversion War → **L17 Three-Court Cartel** → **L18 Post-Eviction Torts** → **L19 Brown Fraud + Forgery** → **L20 VanDam/LLC Chain + Brain DB + Full Activation***
+## L21 — ABOVE-TRIAL-COURT ACTIVATION LAYER
+
+> **PURPOSE:** When Muskegon County trial courts are structurally compromised (cartel contamination), this layer activates all above-trial-court litigation routes. Automatically triggered when: Hoopes or Ladas-Hoopes = assigned judge, Brown's res judicata insertion is invoked, or MSC/federal forum is more appropriate than 14th Circuit.
+
+### Activation Triggers
+- Trial court denies emergency relief without reasoning
+- Opposing party invokes res judicata (Brown's fraudulent insertion)
+- Hoopes/Ladas-Hoopes assigned to any Lane B proceeding
+- SOL for any above-trial-court remedy within 90 days
+- Federal RICO pattern elements confirmed (2+ predicate acts documented)
+
+### L21.1 — Federal RICO Routing (18 USC 1962)
+```
+Enterprise: 8-LLC shell chain (Alden → HOA → all subsidiaries)
+Predicate acts confirmed (6): wire fraud + mail fraud + extortion + obstruction + conversion + money laundering
+Treble damages: $426,723–$1,920,000
+SOL: July 17, 2029 (4 years from eviction)
+Venue: USDC Western District Michigan, Grand Rapids
+File with: §1983 judicial cartel count (Count XVI)
+```
+
+**Filing checklist:**
+- [ ] Verified complaint — RICO enterprise + 6 predicate acts
+- [ ] Civil cover sheet JS 44 + AO 239 (IFP)
+- [ ] VIN 1646732 SOS title as Exhibit A
+- [ ] Coercion emails (Pryzbalek Feb 13, 2025) as Exhibit B
+- [ ] VanDam Facebook Messenger screenshot (Feb 18, 2026) as Exhibit C
+- [ ] Corporate dissolution certificates (LARA) as Exhibit D
+- [ ] Brown order vs. hearing transcript as Exhibit E
+- [ ] Judicial marriage record + former firm record as Exhibit F
+
+### L21.2 — Michigan RICO Routing (MCL 750.159i)
+```
+Superior SOL: 10 years (expires July 17, 2035)
+Damages: 2x actual + attorney fees
+Pattern: 5+ predicate acts within 18 months
+Venue: 14th Circuit (recuse Hoopes first) OR change venue to Ottawa/Kent County
+Key advantage: State discovery subpoenas reach Alden NY principals
+```
+
+**Venue change strategy:** MCR 2.222 — "impartial trial cannot be had" in Muskegon County. Grounds: Hoopes + Ladas-Hoopes marriage + McNeill cartel = systemic contamination. Move to Kent County (Grand Rapids) circuit court.
+
+### L21.3 — MSC MCR 7.306 Superintending Control
+```
+Authority: Const 1963 art 6 §4; MCR 7.306
+No SOL — void orders attackable at any time
+Target: Hoopes + Ladas-Hoopes non-disclosure + void eviction writ
+Relief: Vacate all orders; reassign outside Muskegon County; appoint special judge
+URGENT: File within 60 days to prevent further adverse proceedings
+```
+
+**MSC complaint structure:**
+1. Jurisdictional statement — MSC original jurisdiction per art 6 §4
+2. Statement of facts — cartel discovery; conflict non-disclosure; void orders
+3. Argument I — Ladas-Hoopes' eviction writ void (no jurisdiction over titled chattel)
+4. Argument II — Hoopes violated due process (denied emergency; went on vacation)
+5. Argument III — Three-court cartel requires MSC intervention (no adequate remedy below)
+6. Prayer — Vacate; reassign; extraordinary relief
+
+### L21.4 — COA + MCR 2.612 Brown Fraud
+```
+MCR 2.612(C)(1)(c): 1-year SOL from order date — CHECK DATE IMMEDIATELY
+MCR 2.612(C)(1)(d): NO time limit (fraud on court)
+Adair analysis: Res judicata fails all 4 elements
+ARDC referral: Brown P77427 — MRPC 3.3, 3.4 violations
+```
+
+**Immediate action:** Obtain exact date of Hoopes' order containing Brown's res judicata language. If within 1 year: file both (c) and (d) simultaneously. If beyond 1 year: file only (d) (fraud on court = no time limit).
+
+### L21.5 — JTC Complaints
+```
+Target 1: Hon. Kenneth Hoopes — 5 Canon violations documented
+Target 2: Hon. Maria Ladas-Hoopes — 4 Canon violations documented
+Filing deadline: 1 year from most recent violation
+Hoopes' vacation denial: ~July 2025 → deadline ~July 2026
+File simultaneously with §1983 for maximum pressure
+```
+
+### L21.6 — HUD/FHA + Michigan AG
+```
+HUD DEADLINE: July 17, 2026 (~99 days from April 9, 2026) ← CRITICAL
+File: hud.gov/program_offices/fair_housing_equal_opp/online-complaint
+Michigan AG MCPA: MCL 445.903; 6-year SOL; private right of action + AG independent action
+ARDC Brown: MRPC 3.3/3.4; no firm deadline; file when federal complaint filed
+```
+
+### L21.7 — §1983 Judicial Cartel
+```
+Authority: 42 USC §1983; Monell v New York City; Lugar v Edmondson Oil
+Defendants: Hoopes (in personal capacity for non-judicial acts) + Ladas-Hoopes + Brown (private actor acting under color of law via conspiracy)
+Claims: 14th Amendment due process + equal protection; 1st Amendment (access to courts)
+Damages: $0 against judges for judicial acts; compensatory + punitive against Brown + HOA principals
+SOL: 2 years (Michigan borrowing statute) — expires July 17, 2027
+```
+
+**Color of law analysis for non-judges:**
+- Brown + HOA entities conspired with judges → private parties become state actors under *Lugar v Edmondson Oil, 457 US 922 (1982)*
+- Email evidence shows pre-eviction coordination between HOA legal team and court proceedings
+- VanDam's "thru our legal team" statement = evidence of coordinated state action
+
+### L21.8 — Coordinated Strike Sequence
+```
+DAY 1 (IMMEDIATE): File HUD complaint online (no attorney needed; ~30 min)
+DAY 1–3: File Michigan AG MCPA complaint (fax/mail)
+DAY 30: File MCR 2.612 motion (Brown fraud) — preserves 1-year SOL
+DAY 45: File MSC MCR 7.306 petition (void orders; judicial cartel)
+DAY 60: File JTC complaints (Hoopes + Ladas-Hoopes)
+DAY 90: File federal complaint (RICO + §1983); simultaneously file state RICO in recused court
+DAY 120: File ARDC complaint against Brown P77427
+DAY 180: File COA appeal of Lane B dismissal
+```
+
+### L21.9 — L21 Intelligence Sources
+All L21 intelligence persisted in:
+- `shadyoaks_brain.db` → `prayers_for_relief` rows 21–28 (Counts IX–XVI)
+- `litigation_context.db` → `lane_b_prayers_for_relief` rows 21–28
+- `SHADY_OAKS_ENCYCLOPEDIA.md` → §35 (Fed RICO), §36 (MI RICO), §37 (MSC), §38 (COA/Brown), §39 (JTC), §40 (HUD/AG)
+- `LANE_B_DAMAGES_LAW_RESEARCH_MEMO_2026.md` → 20-row theory table with damages formula per count
+
+---
+
+## END SHADYOAKS-DESTRUCTION SKILL SYSTEM (21 LAYERS)
+
+*Architecture: L0 Corporate Identity → L1 Individual Profiles (8 persons) → L2 23 Causes of Action → L3 Evidence Database → L4 Timeline → L5 EGLE → L6 Filing Stack → L7 Authorities → L8 Damages ($668K–$2.706M base) → L9 Service Targets → L10 SOL → L11 Cascade → L12 Scope Lock → L13 Slander of Title/Screenshot → L14 Judicial Cartel/Hoopes → L15 MCR 2.612 Vacate → L16 Ongoing Conversion War → **L17 Three-Court Cartel** → **L18 Post-Eviction Torts** → **L19 Brown Fraud + Forgery** → **L20 VanDam/LLC Chain + Brain DB + Full Activation** → **L21 Above-Trial-Court: Fed RICO + MI RICO + MSC + COA + JTC + HUD + §1983***
 
 *Primary adversaries: Alden Global Capital → Homes of America → Shady Oaks Park MHP LLC (DISSOLVED NJ 2022) → Cricklewood MHP LLC → Partridge Equity Group → Nicole Browley → Kim Davis → **Cassandra "Casey" VanDam** → Jeremy Brown (P77427, atty) → Bryon Fields (LARA) → Kenneth Hoopes (judge) → Maria Ladas-Hoopes (judge, wife of Hoopes) → Hon. Jenny L. McNeill (custody judge, former firm partner)*
 
